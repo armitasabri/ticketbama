@@ -1,0 +1,98 @@
+.mfaded{
+    background-image: url(img/mimg/faded3.png);
+    height: 320px;
+}
+.mfilmname{
+    font-size: 34px;
+    color: antiquewhite;
+
+}
+.mfilmdirector{
+    color: antiquewhite;
+    font-size: 18px;
+}
+.mbuy{
+    background:rgb(57,132,60);
+    color:rgb(255,255,255);
+    border-radius: 23px;
+    padding-left: 15px;
+}
+#mshows{
+    margin-top: 100px;
+}
+.mcinemas{
+    height: 70px;
+  line-height: 70px;
+  white-space: nowrap;
+}
+.msend{
+    background:rgb(57,132,60);
+    color:rgb(255,255,255);
+    border-radius: 23px;
+    text-decoration: none;
+    border: none;
+}
+.item{
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+.mcomment{
+    margin-top: 200px;
+}
+
+
+.mslider .owl-nav div.owl-prev{
+    background-color:#df42b1;
+    color:rgb(255,255,255);
+
+}
+.mslider .owl-nav div.owl-next{
+    background-color:#df42b1;
+    color:rgb(255,255,255);
+
+}
+.mchecked{
+    color: #df42b1;
+}
+.mpoint{
+    font-size: 18px;
+    color: antiquewhite;
+}
+
+
+.secsalonname{
+    color: antiquewhite;
+    font-size: 18px;
+}
+.ghabelekharid{
+    height: 16px;
+    width: 16px;
+    background-color: darkgreen;
+    display: inline-block;
+    float: right;
+    margin-left: 4px;
+    margin-top: 3px;
+}
+.forukhteh{
+    height: 16px;
+    width: 16px;
+    background-color: darkred;
+    display: inline-block;
+    float: right;
+    margin-left: 4px;
+    margin-top: 3px;
+    margin-right: 5px;
+
+}
+.reserve{
+    height: 16px;
+    width: 16px;
+    background-color: goldenrod;
+    display: inline-block;
+    float: right;
+    margin-left: 4px;
+    margin-top: 3px;
+    margin-right: 5px;
+
+}
