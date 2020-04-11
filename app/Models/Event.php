@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     //
-    public $table = "Event";
+    // public $table = "Event";
     
-   public function Sans(){
-       return $this->belongsTo('App\Models\Sans');
+   public function Sanse(){
+       return $this->belongsTo('App\Models\Sanse');
    }
 
    public function Hall(){
@@ -23,11 +23,6 @@ class Event extends Model
 
    public function Category(){
     return $this->belongsTo('App\Models\Category','category_id', 'id');
-   }
-
-
-   public function Venue(){
-    return $this->belongsTo('App\Models\Venue');
    }
 
    public function Blog(){

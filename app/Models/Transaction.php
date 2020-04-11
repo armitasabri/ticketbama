@@ -8,7 +8,7 @@ class Transaction extends Model
 {
     //
 
-    public $table = "Transaction";
+    // public $table = "Transaction";
     
     public function Order(){
 

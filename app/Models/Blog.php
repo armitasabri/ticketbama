@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     //
-    public $table = "Blog";
+    // public $table = "Blog";
 
     public function Event(){
         return $this->belongsTo('App\Models\Event','event_id','id');

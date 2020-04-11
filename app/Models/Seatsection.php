@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Seatsection extends Model
 {
     //
-     public $table="Seatsection";
+    //  public $table="Seatsection";
 
     public function Hall(){
 

@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     //
-    public $table = "Role";
+    // public $table = "Role";
+    
     public function User(){
         return $this->belongsToMany('App\Models\User');
     }

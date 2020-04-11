@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Newsletter extends Model
 {
     //
-    public $table = "Newsletter";
+    // public $table = "Newsletter";
 }

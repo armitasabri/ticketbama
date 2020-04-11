@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     //
-    public $table = "Tag";
+    // public $table = "Tag";
 
     public function Event()
     {

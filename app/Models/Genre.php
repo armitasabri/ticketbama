@@ -8,7 +8,7 @@ class Genre extends Model
 {
     //
 
-    public $table = "Genre";
+    // public $table = "Genre";
 
     public function Event(){
 

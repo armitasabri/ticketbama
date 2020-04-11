@@ -9,7 +9,7 @@ class Favourite extends Model
     //
     
 
-    public $table = "Favourite";
+    // public $table = "Favourite";
 
     public function Event(){
 

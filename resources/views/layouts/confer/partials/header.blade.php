@@ -70,12 +70,34 @@
                     <!-- Get Tickets Button -->
                     <div class="classynav ">
                     <a href="{{route('tracking')}}" class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">پیگیری خرید<i class="zmdi zmdi-long-arrow-left"></i></a>
+                    @guest
                     <a href="{{route('login')}}" class="btn  mt-3 mt-lg-0 ml-3 ml-lg-5" style="background-color:#151853;color:white">ورود/ثبت نام </a>
                         {{-- <div class="input-icons">
                             <i class="fa fa-search mainsearch" ></i>
                            <input type="text" placeholder="جستجو" class="pr-1">  
                         </div> --}}
+                    @else
+                    <li class="nav-item dropdown ">
+                        <a id="navbarDropdown" style="color:white" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                          خوش آمدی  {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
 
+                        <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-center"  href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('خروج از حساب کاربری') }}
+                            </a>
+                            <a class="dropdown-item text-center" href="{{ route('profile') }}">
+                                {{ __('مشاهده پروفایل') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
                         <div class="md-form active-purple active-purple-2 mb-2">
                         <form action="{{route('search_result')}}" method="post">
                             {{ csrf_field() }}

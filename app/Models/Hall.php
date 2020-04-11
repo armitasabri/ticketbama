@@ -9,7 +9,7 @@ class Hall extends Model
     //
 
     
-    public $table = "Hall";
+    // public $table = "Hall";
 
     public function Seatsection(){
 

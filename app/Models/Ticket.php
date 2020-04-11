@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     //
-    public $table = "Ticket";
+    // public $table = "Ticket";
 
     public function Seat(){
         return $this->belongsTo('App\Models\Seat','seat_id','id');

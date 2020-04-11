@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Date extends Model
 {
     //
-    public $table = "Date";
+    // public $table = "Date";
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Genre;
 
 class EventController extends Controller
 {
@@ -37,4 +38,6 @@ class EventController extends Controller
     public function popular_events(){
 
     }
+
+   
 }

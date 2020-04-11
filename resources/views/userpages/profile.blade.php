@@ -16,8 +16,8 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        {{-- <span class="text-success">  {{ Auth::user()->name }}  </span>    جان --}}
-                      <h6 style="direction: rtl; text-align: right; color:rgb(254,254,94); display: inline-block;"> به حساب کاربری خود خوش آمدید!</h6>
+                       <h6><span class="text-success">  {{ Auth::user()->name }}  </span>  <span class="text-white">  عزیز</span></h6> 
+                      <h6 style="direction: rtl; text-align: right; color:rgb(254,254,94); display: inline-block;"> به پروفایل خود خوش آمدید!</h6>
                         <div class="pt-20 text-light hovericon " style="padding-top:6vh;direction: rtl; text-align: right;"> <a class="text-light" style="color:black" href="#"><i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;مشاهده خرید‌ها</a> </div>
                         <div class="pt-20 text-light hovericon " style="padding-top:3vh;direction: rtl; text-align: right;"> <a class="text-light" style="color:black" href="#"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;برگشت به صفحه اصلی</a> </div>
                         <div class="pt-20 text-light hovericon  " style="padding-top:3vh;direction: rtl; text-align: right;"> <a class="text-light" style="color:black" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;تغییر مشخصات کاربری </a> </div>

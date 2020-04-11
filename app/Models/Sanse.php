@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sans extends Model
+class Sanse extends Model
 {
     //
-    public $table = "Sans";
+    // public $table = "Sanse";
 
     public function Order(){
 
-        return $this->hasMany('App\Models\Order' ,'id', 'sans_id');
+        return $this->hasMany('App\Models\Order' ,'id', 'sanse_id');
     }
 
     public function Seat(){

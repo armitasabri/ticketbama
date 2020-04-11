@@ -8,7 +8,7 @@ class Event_rating extends Model
 {
     //
 
-    public $table = "Event_rating";
+    // public $table = "Event_rating";
 
     public function Event(){
 

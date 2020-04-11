@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Venue extends Model
 {
     //
-    public $table = "Venue";
+    // public $table = "Venue";
 
     public function Hall(){
 

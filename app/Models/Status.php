@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Status extends Model
 {
     //
-    public $table = "Status";
+    // public $table = "Status";
     
     public function Seats(){
 

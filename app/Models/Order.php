@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     //
-    public $table = "Order";
+    // public $table = "Order";
 
     public function Seatsection(){
 
@@ -24,9 +24,9 @@ class Order extends Model
         return $this->belongsTo('App\Models\User' ,'user_id', 'id');
     }
 
-    public function Sans(){
+    public function Sanse(){
 
-        return $this->belongsTo('App\Models\Sans' ,'sans_id', 'id');
+        return $this->belongsTo('App\Models\Sanse' ,'sanse_id', 'id');
     }
 
     public function Ticket(){

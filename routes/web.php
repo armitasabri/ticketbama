@@ -40,8 +40,8 @@ Route::get('/c_events_category','FrontController@concert_eventscategory')->name(
 
 
 
-Route::get('/','HomeController@index');
-Route::get('/home','HomeController@index')->name('home');
+Route::get('/','HomeController@index')->name('home');
+// Route::get('/myhome','HomeController@index');
 
 // ====== EventController ============
 Route::get('/single_event','EventController@single_event')->name('single_event');
@@ -85,8 +85,8 @@ Route::get('/ticket_history','UserController@profile')->name('ticket_history');
 Route::get('/edit_profile','UserController@edit_profile')->name('edit_profile');
 Route::get('/favourite_save','UserController@favourite_save')->name('favourite_save');
 Route::get('/favourite_show','UserController@favourite_show')->name('favourite_show');
-Route::get('/register','UserController@register')->name('register');
-Route::get('/login','UserController@login')->name('login');
+Route::get('/myregister','UserController@register')->name('myregister');
+Route::get('/mylogin','UserController@login')->name('mylogin');
 
 
  // ======== RateandCommentController =========
@@ -94,3 +94,14 @@ Route::get('/login','UserController@login')->name('login');
  Route::get('/rate_save','RateandCommentController@rate_save')->name('rate_save');
  Route::get('/rate_show','RateandCommentController@rate_show')->name('rate_show');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/laravelhome', 'HomeController@index2')->name('l_home');
+
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

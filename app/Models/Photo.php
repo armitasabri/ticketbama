@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Photo extends Model
 {
     //
-    public $table = "Photo";
+    // public $table = "Photo";
     
     public function Imageable(){
 
