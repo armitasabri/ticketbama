@@ -17,7 +17,7 @@
                         <!-- The slideshow -->
                         <div class="carousel-inner pt-3 pb-4">
                           <div class="carousel-item active">
-                          <a href="{{route('single_event')}}"> <img src="{{asset('assets/img/movie-posters/ragkhab.jpg')}}" alt="iranian-movie" width="100%" height="100%"></a>  
+                          <a href="#"> <img src="{{asset('assets/img/movie-posters/ragkhab.jpg')}}" alt="iranian-movie" width="100%" height="100%"></a>  
                             <div class="carousel-caption">
                                 
                               

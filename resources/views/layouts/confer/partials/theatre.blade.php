@@ -19,24 +19,18 @@
         </div>
         
     <div class="row pl-2 pr-2 pb-5" >
-        <div class="col pt-3 hvr-push"  >
-            <img src="{{asset('assets/img/theatres/fish.jpg')}}" style="width:100%;height:100%" alt="">
-            <h5 class="pt-2" style="text-align:center;">شاه ماهی</h5>
-        </div>
-        <div class="col pt-3 hvr-push" >
-            <img src="{{asset('assets/img/theatres/ghamar.jpg')}}"  style="width:100%;height:100%"  alt="">
-            <h5 class="pt-2" style="text-align:center;">کلینیک قمر</h5>
-        </div>
-        <div class="col pt-3 hvr-push" >
-            <img src="{{asset('assets/img/theatres/happy hour.jpg')}}" style="width:100%;height:100%"  alt="">
-            <h5 class="pt-2" style="text-align:center;">ساعت خوش</h5>
-        </div>
-        <div class="col pt-3 hvr-push" ><img src="{{asset('assets/img/theatres/idiots.jpg')}}" style="width:100%;height:100%" alt="">
-            <h5 class="pt-2" style="text-align:center;">کم شعورها</h5>
-        </div>
+
+        @foreach ($theatres as $theatre)
+          <div class="col-3 pt-3 hvr-push"  >
+          <img src="assets/img/theatres/{{$theatre->fileimage}}" style="width:100%;height:100%" alt="">
+          <h5 class="pt-2" style="text-align:center;">{{$theatre->title}}</h5>
+          </div>  
+        @endforeach
+        
+
     </div>
 
-    <div class="row pt-3 pb-5">
+    {{-- <div class="row pt-3 pb-5">
         <div class="col hvr-push">
             <img src="{{asset('assets/img/theatres/murder.jpg')}}" style="width:100%;height:100%" alt="">
             <h5 class="pt-2" style="text-align:center;">قتل</h5>
@@ -53,6 +47,6 @@
             <img src="{{asset('assets/img/theatres/talayerashid-min.jpg')}}" style="width:100%;height:100%" alt="">
             <h5 class="pt-2" style="text-align:center;">طلای رشید</h5>
         </div>
-    </div>
+    </div> --}}
     </div>
 </section>

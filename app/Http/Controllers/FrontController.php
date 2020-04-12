@@ -14,15 +14,15 @@ class FrontController extends Controller
         return view('contactus');
     }
 
-    public function movie_eventscategory(){
-        return view('m_events');
-    }
-    public function theatre_eventscategory(){
-        return view('t_events');
-    }
-    public function concert_eventscategory(){
-        return view('c_events');
-    }
+    // public function movie_eventscategory(){
+    //     return view('m_events');
+    // }
+    // public function theatre_eventscategory(){
+    //     return view('t_events');
+    // }
+    // public function concert_eventscategory(){
+    //     return view('c_events');
+    // }
     public function single_event(){
         return view('events.single_event');
     }

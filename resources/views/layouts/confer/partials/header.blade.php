@@ -31,32 +31,24 @@
                          {{-- <li><a href="{{route('m_events')}}">فیلم‌ها</a></li> --}}
                          <li><a href="#">فیلم‌ها</a>
                             <ul class="dropdown">
-                                <li><a  href="index.html">کمدی</a></li>
-                                <li><a href="about.html">درام</a></li>
-                                <li><a href="speakers.html">خانوادگی</a></li>
-                                <li><a href="speakers.html">عاشقانه</a></li>
-                                <li><a href="speakers.html">ترسناک</a></li>
-                                <li><a href="speakers.html">کودک</a></li>
-                                <li><a href="speakers.html">مستند</a></li>
-                                <li><a href="speakers.html">علمی و تخیلی</a></li>
-                                <li><a href="speakers.html">انیمیشن</a></li>
+                                @foreach ($mgenres as $mgenre)
+                            <li><a  href="{{'m_events/'.$mgenre->id}}">{{$mgenre->name}}</a></li>
+                                @endforeach
+                                
                             </ul>
                         </li>
                          <li><a href="{{route('showtheatrecategory')}}">تئاتر‌ها</a>
                             <ul class="dropdown">
-                                <li><a  href="index.html">کمدی</a></li>
-                                <li><a href="about.html">رئالیسم</a></li>
-                                <li><a href="speakers.html">کلاسیک</a></li>
+                                @foreach ($tgenres as $tgenre)
+                            <li><a  href="index.html">{{$tgenre->name}}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                          <li><a href="{{route('showconcertcategory')}}">کنسرت‌ها</a>
                             <ul class="dropdown">
-                                <li><a  href="index.html">پاپ</a></li>
-                                <li><a href="about.html">سنتی</a></li>
-                                <li><a href="speakers.html">راک و رول</a></li>
-                                <li><a href="speakers.html">جاز</a></li>
-                                <li><a href="speakers.html">رپ</a></li>
-                                <li><a href="speakers.html">کانتری</a></li>
+                                @foreach ($cgenres as $cgenre)
+                                <li><a  href="index.html">{{$cgenre->name}}</a></li>
+                                    @endforeach
 
                               
                             </ul>
@@ -77,9 +69,11 @@
                            <input type="text" placeholder="جستجو" class="pr-1">  
                         </div> --}}
                     @else
-                    <li class="nav-item dropdown ">
+                    <li class="nav-item  dropdown ">
                         <a id="navbarDropdown" style="color:white" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                          خوش آمدی  {{ Auth::user()->name }} <span class="caret"></span>
+                          <img src="{{asset('assets/img/avatars/unknownuser.png')}}" class="rounded-circle" alt="" style="width:30px;height:30px;">  
+                           {{ Auth::user()->name }} <span class="caret"></span>
+                       
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="navbarDropdown">

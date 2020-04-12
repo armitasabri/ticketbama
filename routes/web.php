@@ -44,8 +44,8 @@ Route::get('/','HomeController@index')->name('home');
 // Route::get('/myhome','HomeController@index');
 
 // ====== EventController ============
-Route::get('/single_event','EventController@single_event')->name('single_event');
-Route::get('/m_events','EventController@m_events')->name('m_events');
+Route::get('/single_event/{id}','EventController@single_event')->name('single_event');
+Route::get('/m_events/{id}','EventController@m_events')->name('m_events');
 Route::get('/t_events','EventController@t_events')->name('t_events');
 Route::get('/c_events','EventController@c_events')->name('c_events');
 Route::get('/best_sellers','EventController@best_sellers')->name('best_sellers');

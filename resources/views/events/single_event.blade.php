@@ -12,7 +12,7 @@
                     <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
                         <!-- event image -->
                         <div class="speaker-single-thumb">
-                            <img src="{{asset('assets/img/feature-movies/Macerated Nimrod _ poster by The 3X4.jpg')}}" alt="" style="height: 280px;width:100%;">
+                            <img src="../assets/img/feature-movies/{{$event->fileimage}}" alt="" style="height: 280px;width:100%;">
                         </div>
 
 
@@ -42,8 +42,8 @@
 
                         </a>
                     </div>
-                    <p class="mfilmname mt-1" dir="rtl" align="right">نام رویداد</p>
-                    <p class="mfilmdirector" dir="rtl" align="right">کارگردان</p>
+                <p class="mfilmname mt-1" dir="rtl" align="right">{{$event->title}}</p>
+                <p class="mfilmdirector" dir="rtl" align="right">کارگردان: {{$event->director}}</p>
                     <div class="more-speaker-btn text-center mt-20  fadeInUp" data-wow-delay="300ms">
                         <a href="#msans" style="color: white;"><button class="btn  mbuy" style="font-size: 18px;">
                                 <i class="zmdi zmdi-shopping-cart"
@@ -60,22 +60,22 @@
             <div class="col-4 border shadow" style="height: 300px;">
                 <p style="font-size: 24px;" dir="rtl" align="right"><i class="zmdi zmdi-triangle-down"
                         style="margin-left: 7px;color:#df42b1;"></i>درباره رویداد</p>
+                        {{$event->description}}
             </div>
-            <div class="col-1"></div>
+        <div class="col-1"></div>
             <!-- event images -->
             <div class="col-6 border shadow ">
                 <p style="font-size: 24px" dir="rtl" align="right"><i class="zmdi zmdi-triangle-down"
                         style="margin-left: 7px;color:#df42b1;"></i>تصاویر</p>
                 <div class="d-flex col-12 mb-3">
-                    <div class="col-4 " style="height:190px">
-                        <img src="{{asset('assets/img/mimg/nimrooz1.jpg')}}" alt="" class="border shadow" style="height:100%">
-                    </div>
-                    <div class="col-4" style="height:190px">
-                        <img src="{{asset('assets/img/mimg/nimrooz2.jpg')}}" alt="" class="border shadow" style="height:100%">
-                    </div>
-                    <div class="col-4" id="msans" style="height:190px">
-                        <img src="{{asset('assets/img/mimg/nimrooz3.jpg')}}" alt="" class="border shadow" style="height:100%">
-                    </div>
+                    @foreach ($event->Photo->take(3) as $photo)
+                    <div class="col-4 " style="height:200px;">
+                       
+                        <img src="../assets/img/feature-movies/{{$photo->path}}" alt="" class="border shadow" style="width:100%;height:100%">
+                    </div> 
+                    @endforeach
+                    
+    
                 </div>
             </div>
         </div>

@@ -9,24 +9,13 @@
         </div>
         
     <div class="row pl-2 pr-2 pb-5" >
-        <div class="col pt-3 hvr-wobble-vertical" style="max-height:25%" >
-            <img src="{{asset('assets/img/concerts/reza.jpg')}}" style="width:100%;height:100%" alt="">
-            <h5 class="pt-2" style="text-align:center;">رضا بهرام</h5>
-        </div>
-        <div class="col pt-3 hvr-wobble-vertical" >
-            <img src="{{asset('assets/img/concerts/hojat.jpg')}}"  style="width:100%;height:100%"  alt="">
-            <h5 class="pt-2" style="text-align:center;">حجت اشرف‌زاده</h5>
-        </div>
-        <div class="col pt-3 hvr-wobble-vertical" >
-            <img src="{{asset('assets/img/concerts/masih.jpg')}}" style="width:100%;height:100%"  alt="">
-            <h5 class="pt-2" style="text-align:center;">مسیح و آرش</h5>
-        </div>
-        <div class="col pt-3 hvr-wobble-vertical" ><img src="{{asset('assets/img/concerts/hamed.jpg')}}" style="width:100%;height:100%" alt="">
-            <h5 class="pt-2" style="text-align:center;">حامد همایون</h5>
-        </div>
-        <div class="col pt-3 hvr-wobble-vertical" ><img src="{{asset('assets/img/concerts/mohsen.jpg')}}" style="width:100%;height:100%" alt="">
-            <h5 class="pt-2" style="text-align:center;">محسن ابراهیم‌زاده</h5>
-        </div>
+        @foreach ($concerts as $concert)
+         <div class="col-3 pt-3 hvr-wobble-vertical" style="max-height:25%" >
+         <img src="assets/img/concerts/{{$concert->fileimage}}" style="width:100%;height:100%" alt="">
+         <h5 class="pt-2" style="text-align:center;">{{$concert->title}}</h5>
+         </div>
+        @endforeach
+       
     </div>
 
     

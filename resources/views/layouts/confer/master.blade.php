@@ -11,7 +11,7 @@
         @include('layouts.confer.partials.header')
       
     
-    
+         @yield('content')
          @yield('firstslider') 
          @yield('fastshopping')
 
