@@ -11,11 +11,17 @@ class Comment extends Model
 
     public function Event(){
 
-        return $this->belongsTo('App\Models\Event' ,'event_id', 'id');
+        return $this->belongsTo('App\Models\Event' ,'events_id', 'id');
     }
 
     public function User(){
 
         return $this->belongsTo('App\Models\User' ,'user_id', 'id');
     }
+
+    public function Cstatus(){
+
+        return $this->belongsTo('App\Models\Cstatus','cstatuses_id','id');
+    }
+   
 }

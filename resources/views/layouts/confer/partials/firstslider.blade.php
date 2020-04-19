@@ -1,6 +1,7 @@
+
 <section style="padding-top:14vh;" class="bg-gradient-overlay">
   {{-- background-color:#8C52A7; --}}
-        <div class="container" >
+        {{-- <div class="container" >
             <div class="row ">
             
                  <div id="demo" class="carousel slide slideshow-container col-12" data-ride="carousel" >
@@ -71,7 +72,50 @@
             
         </div>
            
-       
+        --}}
           
-    
+
+
+
+
+      <div class="top-content">
+        <div class="container-fluid d-flex justify-content-center align-items-center pt-5">
+            <div id="carousel-example" class="carousel slide " data-ride="carousel" style="min-height:500px;">
+                <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4 active">
+                        <img src="{{asset('assets/img/movie-posters/1.jpg')}}" class="img-fluid mx-auto d-block" alt="img1">
+                    </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
+                        <img src="{{asset('assets/img/movie-posters/2.jpg')}}" class="img-fluid mx-auto d-block" alt="img2">
+                    </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
+                        <img src="{{asset('assets/img/movie-posters/3.jpg')}}" class="img-fluid mx-auto d-block" alt="img3">
+                    </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
+                        <img src="{{asset('assets/img/movie-posters/4.jpg')}}" class="img-fluid mx-auto d-block" alt="img4">
+                    </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
+                      <img src="{{asset('assets/img/movie-posters/5.jpg')}}" class="img-fluid mx-auto d-block" alt="img4">
+                  </div>
+                  <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
+                    <img src="{{asset('assets/img/movie-posters/6.jpg')}}" class="img-fluid mx-auto d-block" alt="img4">
+                </div>
+                <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
+                  <img src="{{asset('assets/img/movie-posters/7.jpg')}}" class="img-fluid mx-auto d-block" alt="img4">
+              </div>
+              <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
+                <img src="{{asset('assets/img/movie-posters/8.jpg')}}" class="img-fluid mx-auto d-block" alt="img4">
+            </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
     </section>

@@ -21,11 +21,11 @@ class Seatsection extends Model
 
     public function Price(){
 
-        return $this->belongsTo('App\Models\Price' ,'price_id', 'id');
+        return $this->belongsTo('App\Models\Price' );
     }
 
     public function Seat(){
 
-        return $this->hasMany('App\Models\Seat' ,'id', 'seatsection_id');
+        return $this->hasMany('App\Models\Seat' );
     }
 }

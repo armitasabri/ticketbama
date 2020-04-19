@@ -32,7 +32,7 @@
                          <li><a href="#">فیلم‌ها</a>
                             <ul class="dropdown">
                                 @foreach ($mgenres as $mgenre)
-                            <li><a  href="{{'m_events/'.$mgenre->id}}">{{$mgenre->name}}</a></li>
+                            <li><a  href="{{route('m_events',['id'=>$mgenre->id])}}">{{$mgenre->name}}</a></li>
                                 @endforeach
                                 
                             </ul>
@@ -40,14 +40,14 @@
                          <li><a href="{{route('showtheatrecategory')}}">تئاتر‌ها</a>
                             <ul class="dropdown">
                                 @foreach ($tgenres as $tgenre)
-                            <li><a  href="index.html">{{$tgenre->name}}</a></li>
+                            <li><a  href="{{route('t_events',['id'=>$tgenre->id])}}">{{$tgenre->name}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
                          <li><a href="{{route('showconcertcategory')}}">کنسرت‌ها</a>
                             <ul class="dropdown">
                                 @foreach ($cgenres as $cgenre)
-                                <li><a  href="index.html">{{$cgenre->name}}</a></li>
+                                <li><a  href="{{route('c_events',['id'=>$cgenre->id])}}">{{$cgenre->name}}</a></li>
                                     @endforeach
 
                               
@@ -64,18 +64,50 @@
                     <a href="{{route('tracking')}}" class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">پیگیری خرید<i class="zmdi zmdi-long-arrow-left"></i></a>
                     @guest
                     <a href="{{route('login')}}" class="btn  mt-3 mt-lg-0 ml-3 ml-lg-5" style="background-color:#151853;color:white">ورود/ثبت نام </a>
-                        {{-- <div class="input-icons">
-                            <i class="fa fa-search mainsearch" ></i>
-                           <input type="text" placeholder="جستجو" class="pr-1">  
-                        </div> --}}
+                       
                     @else
-                    <li class="nav-item  dropdown ">
+                    <ul  style="padding-left:1vw;">
+                        
+                    <li>
+                        <a>
+                            {{ Auth::user()->name }} 
+                        <img src="{{asset('assets/img/avatars/unknownuser.png')}}" class="rounded-circle" alt="" style="width:30px;height:30px;">  
+
+                        </a>
+                       <ul class="dropdown" style="width:180px;">
+                           <li>
+                            <a  href="{{ route('profile') }}">
+                                {{ __('مشاهده پروفایل') }}
+                            </a>
+                           </li>
+                           <li>
+                            <a  href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                             {{ __('خروج از حساب کاربری') }}
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                         </a>
+                           </li>
+                            @if (Auth::user()->role_id===1)
+                             <li>
+                            <a  href="{{ url('/admin') }}" >
+                                {{ __(' مشاهده پنل مدیریت') }}
+                            </a>     
+                            </li>
+                            @endif
+                          
+                       </ul>
+
+                    </li>
+                    </ul>
+                    {{-- <li class="nav-item  dropdown ">
                         <a id="navbarDropdown" style="color:white" class="nav-link dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                           <img src="{{asset('assets/img/avatars/unknownuser.png')}}" class="rounded-circle" alt="" style="width:30px;height:30px;">  
                            {{ Auth::user()->name }} <span class="caret"></span>
                        
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-right"  aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-center"  href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -85,12 +117,21 @@
                             <a class="dropdown-item text-center" href="{{ route('profile') }}">
                                 {{ __('مشاهده پروفایل') }}
                             </a>
+                           
+                            @if (Auth::user()->role_id===1)
+
+                            <a class="dropdown-item text-center" href="{{ url('/admin') }}" >
+                                {{ __(' مشاهده پنل مدیریت') }}
+                            </a>     
+
+                            @endif
+
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>
-                    </li>
+                    </li> --}}
                     @endguest
                         <div class="md-form active-purple active-purple-2 mb-2">
                         <form action="{{route('search_result')}}" method="post">

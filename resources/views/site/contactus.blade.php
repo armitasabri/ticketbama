@@ -25,6 +25,10 @@
 <!-- Contact Us Area Start -->
 <section class="contact--us-area section-padding-100-0">
     <div class="container">
+        @if (\Session::has('success'))
+        <p style="color:#111343;font:20px;"> {{ \Session::get('success')}}</p> 
+        
+        @endif
         <div class="row">
             <!-- Contact Us Thumb -->
             <div class="col-12 col-lg-6">
@@ -42,37 +46,53 @@
                         <p> منتظر دریافت پیام‌های شما هستیم. </p>
                     </div>
                     <div class="contact_form">
-                        <form action="mail.php" method="post">
+                    <form action="{{route('contactus_save')}}" method="post">
+                        {{ csrf_field() }}
                             <div class="contact_input_area">
                                 <div class="row">
                                     <!-- Form Group -->
                                     <div class="col-12 col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control mb-30" name="name" id="name" placeholder="اسم">
+                                            <input type="text" class="form-control mb-30" name="name" id="name" placeholder="اسم" required>
+                                            @if  ($errors->any())
+								        <p style="color:red">{{$errors->first('name')}}<p>
+								            @endif
                                         </div>
                                     </div>
                                     <!-- Form Group -->
                                     <div class="col-12 col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control mb-30" name="name" id="name2" placeholder="فامیل">
+                                            <input type="text" class="form-control mb-30" name="lastname" id="name2" placeholder="فامیل" required>
+                                            @if  ($errors->any())
+								        <p style="color:red">{{$errors->first('lastname')}}<p>
+								            @endif
                                         </div>
                                     </div>
                                     <!-- Form Group -->
                                     <div class="col-12 col-lg-6">
                                         <div class="form-group">
-                                            <input type="email" class="form-control mb-30" name="email" id="email" placeholder="ایمیل">
+                                            <input type="email" class="form-control mb-30" name="email" id="email" placeholder="ایمیل" required>
+                                            @if  ($errors->any())
+								        <p style="color:red">{{$errors->first('email')}}<p>
+								            @endif
                                         </div>
                                     </div>
                                     <!-- Form Group -->
                                     <div class="col-12 col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control mb-30" name="subject" id="subject" placeholder="موبایل">
+                                            <input type="text" class="form-control mb-30" name="mobile" id="subject" placeholder="موبایل" required>
+                                            @if  ($errors->any())
+								        <p style="color:red">{{$errors->first('mobile')}}<p>
+								            @endif
                                         </div>
                                     </div>
                                     <!-- Form Group -->
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <textarea name="message" class="form-control mb-30" id="message" cols="30" rows="6" placeholder="پیام شما *"></textarea>
+                                            <textarea name="description" class="form-control mb-30" id="message" cols="30" rows="6" placeholder="پیام شما" required></textarea>
+                                            @if  ($errors->any())
+								        <p style="color:red">{{$errors->first('description')}}<p>
+								            @endif
                                         </div>
                                     </div>
                                     <!-- Button -->

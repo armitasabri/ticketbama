@@ -7,6 +7,9 @@
 
 <body>
   
+  <div class="myloader">
+    <img src="{{asset('assets/img/loaders/first.gif')}}" class="rounded-circle mygift" alt="loading..." >
+    </div>
      
         @include('layouts.confer.partials.header')
       

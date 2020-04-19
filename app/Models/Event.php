@@ -22,7 +22,7 @@ class Event extends Model
    }
 
    public function Category(){
-    return $this->belongsTo('App\Models\Category','category_id', 'id');
+    return $this->belongsTo('App\Models\Category','categories_id', 'id');
    }
 
    public function Blog(){
@@ -30,7 +30,7 @@ class Event extends Model
    }
 
    public function Comment(){
-    return $this->hasMany('App\Models\Comment','id','event_id');
+    return $this->hasMany('App\Models\Comment','id','events_id');
    }
 
    public function Event_rating(){
@@ -56,6 +56,14 @@ class Event extends Model
 
 public function Video(){
     return $this->morphMany('App\Models\Video','videoable');
+}
+
+public function Venue(){
+    return $this->belongsToMany('App\Models\Venue' ,'event_venue');
+}
+
+public function Hall_sanse(){
+    return $this->hasMany('App\Models\Hall_sanse');
 }
 
 }

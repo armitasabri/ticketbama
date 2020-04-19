@@ -3,7 +3,7 @@
 
 
     <div class="background2 ">
-    <div class="container">
+    <div class="container" style="padding-top:120px;min-height:700px">
         <div class="d-flex justify-content-center h-100" style="padding-top:80px;">
             <div class="card">
                 <div class="card-header">
@@ -22,7 +22,7 @@
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
+                            @enderror
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">

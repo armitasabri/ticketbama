@@ -23,6 +23,10 @@ class Hall extends Model
 
     public function Venue(){
 
-        return $this->belongsTo('App\Models\Venue' ,'venue_id', 'id');
+        return $this->belongsTo('App\Models\Venue');
+    }
+
+    public function Hall_sanse(){
+        return $this->hasMany('App\Models\Hall_sanse','id','hall_id');
     }
 }

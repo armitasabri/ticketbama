@@ -2,11 +2,12 @@
 @section('content')
 
 
-    <div class="background2 ">
-    <div class="container">
-        <div class="d-flex justify-content-center h-100" style="padding-top:80px;">
-            <div class="card">
+    <div class="background2 " style="min-height:900px;">
+    <div class="container " >
+        <div class="d-flex justify-content-center h-100" style="padding-top:210px;">
+            <div class="card" >
                 <div class="card-header">
+                  
                     <h3 style="direction: rtl; text-align: right;">ورود به تیکت با ما</h3>
                    
                 </div>
@@ -41,8 +42,8 @@
                             <input type="checkbox">من را به خاطر بسپار
                         </div>
                         <div class="form-group float-left" >
-                            <input type="submit" value="ورود"  class="btn confer-btn "><i class="zmdi zmdi-long-arrow-right"></i>
-                            {{-- <button type="submit" class="btn confer-btn"><h6 class="pt-2">ورود</h6> <i class="zmdi zmdi-long-arrow-right"></i></button> --}}
+                            {{-- <input type="submit" value="ورود"  class="btn confer-btn "><i class="zmdi zmdi-long-arrow-right"></i> --}}
+                            <button type="submit" class="btn confer-btn"><h6 class="pt-2">ورود</h6> <i class="zmdi zmdi-long-arrow-right"></i></button>
                             </div>
                     </form>
                 </div>

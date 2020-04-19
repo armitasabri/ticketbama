@@ -5,6 +5,8 @@
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
      <script src="{{asset('assets/js/owl-carousel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('assets/js/mevent.js')}}"></script>
+    <script src="{{asset('assets/js/loaderjs.js')}}"></script>
+
     <!-- All Plugins -->
     <script src="{{asset('assets/js/confer.bundle.js')}}"></script>
     

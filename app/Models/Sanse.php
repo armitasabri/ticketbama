@@ -23,4 +23,8 @@ class Sanse extends Model
         return $this->hasMany('App\Models\Event' ,'id', 'event_id');
     }
 
+    public function Hall_sanse(){
+        return $this->hasMany('App\Models\Hall_sanse','id','sanse_id');
+    }
+
 }

@@ -14,18 +14,41 @@
 /* font-family: 'Numans', sans-serif; */
 /* } */
 .background2{
-padding-top: 7vh;
-padding-bottom:7vh;
+/* padding-top: 7vh; */
+/* padding-bottom:7vh; */
     background-image: url('img/lpr/cinema.jpg');
     /* background-image: url('https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918__340.jpg'); */
     /* background-image: url('https://cdn.pixabay.com/photo/2013/11/28/10/02/photo-camera-219958__340.jpg'); */
     /* background-image: url('https://cdn.pixabay.com/photo/2016/11/22/19/41/filmstrip-1850277__340.jpg'); */
     /* margin-top: 5vh; */
     background-size: cover;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     height: 100%;
+    width:100%;
 
 }
+
+.background3{
+    padding-top: 7vh;
+    padding-bottom:7vh;
+        background-image: url('img/lpr/cinema.jpg');
+   
+        background-size: cover;
+        /* background-repeat: no-repeat; */
+        height: 100%;
+    
+    }
+
+    .background4{
+        padding-top: 7vh;
+        padding-bottom:7vh;
+            background-image: url('img/lpr/cinema.jpg');
+       
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+        
+        }
 .container{
 height: 100%;
 align-content: center;
@@ -110,3 +133,20 @@ margin-left: 4px;
 
     opacity: 1;
 }
+
+    .reserved{
+   background: green;
+    }
+
+    .unselect{
+  background: grey;
+    }
+
+    .selected{
+        background:red;
+    }
+
+    .forward{
+       right: 70px;;
+    }
+    

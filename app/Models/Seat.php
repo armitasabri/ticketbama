@@ -19,7 +19,7 @@ class Seat extends Model
     }
 
     public function Seatsection(){
-        return $this->belongsTo('App\Models\Seatsection','seatsection_id','id');
+        return $this->belongsTo('App\Models\Seatsection');
     }
 
     public function Ticket(){

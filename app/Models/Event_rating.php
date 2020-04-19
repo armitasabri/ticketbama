@@ -12,7 +12,7 @@ class Event_rating extends Model
 
     public function Event(){
 
-        return $this->belongsTo('App\Models\Event' ,'event_id', 'id');
+        return $this->belongsTo('App\Models\Event' ,'events_id', 'id');
     }
 
     public function User(){

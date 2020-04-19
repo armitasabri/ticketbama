@@ -13,7 +13,11 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right"><h6 class="text-light text-light">نام</h6></label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style="border-radius: 15%; width:40px;"></span>
+                                
+                            </div>
+                            <label for="name" class="col-md-4 col-form-label text-md-right"><i class="fa fa-user"></i><h6 class="text-light text-light">نام </h6></label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,19 +30,7 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row">
-                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('نام کاربری') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div> --}}
+                    
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right"><h6 class="text-light text-light">آدرس پست الکترونیک</h6></label>
@@ -53,6 +45,8 @@
                                 @enderror
                             </div>
                         </div>
+
+
                         <div class="form-group row">
                             <label for="mobile" class="col-md-4 col-form-label text-md-right"><h6 class="text-light text-light">موبایل</h6></label>
 

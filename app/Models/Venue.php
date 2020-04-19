@@ -11,11 +11,15 @@ class Venue extends Model
 
     public function Hall(){
 
-        return $this->hasMany('App\Models\Hall' ,'id', 'venue_id');
+        return $this->hasMany('App\Models\Hall' );
     }
 
     public function Tag()
     {
         return $this->morphtoMany("App\Models\Tag","tagable");
+    }
+
+    public function Event(){
+        return $this->belongsToMany('App\Models\Event','event_venue');
     }
 }

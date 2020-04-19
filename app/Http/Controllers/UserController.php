@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -19,9 +21,27 @@ class UserController extends Controller
         return view('userpages.login');
     }
     
-    public function edit_profile(){
+    public function edit_profile($id){
+        
+       $user=User::find($id);
+    //    dd($user);
+       return view('userpages.editprofile')->with('user',$user);
+    }
+
+
+    public function save_profile(Request $request){
+
+        $id=$request->get('id');
+        $user=User::find($id);
+        $user->name=$request->get('name');
+        $user->email=$request->get('email');
+        $user->mobile=$request->get('mobile');
+        $user->password=$request->get('password');
+        $user->save();
+        return redirect('profile');
 
     }
+
 
     public function ticket_history(){
 
