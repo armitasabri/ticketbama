@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Hall_sanse extends Model
 {
     public function Hall(){
-        return $this->belongsTo('App\Models\Hall','hall_id','id');
+        return $this->belongsTo('App\Models\Hall');
     }
 
     public function Sanse(){
@@ -19,6 +19,13 @@ class Hall_sanse extends Model
         return $this->belongsTo('App\Models\Event');
  
    }
+
+   public function Seat_hall_sanse(){
+    return $this->hasMany('App\Models\Seat_hall_sanse');
+
+}
+
+
 
 
 }

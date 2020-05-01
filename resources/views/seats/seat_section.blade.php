@@ -12,7 +12,7 @@
                     <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
                         <!-- event image -->
                         <div class="speaker-single-thumb">
-                            <img src="{{asset('assets/img/feature-movies/Macerated Nimrod _ poster by The 3X4.jpg')}}" alt="" style="height: 280px;width:100%;">
+                        <img src="../storage/{{$h->Event->fileimage}}" alt="" style="height: 280px;width:100%;">
                         </div>
 
 
@@ -20,9 +20,9 @@
                 </div>
                 <div style="margin-top: 60px; margin-right: 40px;">
 
-                    <p class="mfilmname mt-2" dir="rtl" align="right">نام رویداد</p>
-                    <p align="right" class="secsalonname">سه شنبه - ساعت 17</p>
-                    <p align="right" class="secsalonname">سینما آزادی - سالن 1</p>
+                <p class="mfilmname mt-2" dir="rtl" align="right">{{$h->Event->title}}</p>
+                <p align="right" class="secsalonname">{{$h->sanse->name}}</p>
+                    <p align="right" class="secsalonname">{{$h->hall->venue->venue_name}}  - {{$h->hall->name}}</p>
 
                 </div>
 
@@ -47,9 +47,9 @@
 
                 <img src="{{asset('assets/img/mimg/seats/sections.png')}}" alt="" usemap="#secmap">
                 <map name="secmap" id="secmap">
-                <area shape="poly" href="{{route('seats')}}"
+                <area shape="poly" href="{{route('seats',['id'=>$h->id,'section'=>"seatsection1"])}}"
                         coords="79,51,42,137,90,148,144,156,190,151,225,146,263,136,226,52,188,64,153,70,110,62">
-                <area shape="poly" href="{{route('seats')}}"
+                <area shape="poly" href="{{route('seats',['id'=>$h->id,'section'=>"seatsection2"])}}"
                         coords="39,149,21,209,74,218,141,225,197,222,246,217,286,208,267,151,212,161,163,167,121,165,76,157">
                 </map>
             </div>
@@ -61,7 +61,7 @@
 
         <!-- === Buy Area === -->
         <div class="more-speaker-btn text-center mt-20  fadeInUp " data-wow-delay="300ms">
-        <a href="{{route('section_select')}}"><button class="btn  mbuy px-3 py-2" style="font-size: 22px;border:none">
+        <a href="{{url('section_select/'.$h->id)}}"><button class="btn  mbuy px-3 py-2" style="font-size: 22px;border:none">
                     خرید بلیط</button></a>
         </div>
         <!-- ==== End of Buy Area =====-->

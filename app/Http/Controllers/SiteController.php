@@ -100,4 +100,8 @@ class SiteController extends Controller
     public function upcoming_news(){
 
    }
+
+   public function noaccess(){
+       return view('site.no_access');
+   }
 }

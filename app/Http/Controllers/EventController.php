@@ -22,19 +22,22 @@ class EventController extends Controller
 
     public function single_event($id){
         $event=Event::find($id);
-       
+        $similars=Event::where('categories_id',$event->categories_id)
+       ->where('genres_id',$event->genres_id)->where('title','not like','%'. $event->title. '%')
+      ->take(3)->get();
+    $points=Event_rating::where('events_id',$id)->get();
+    
+    $sum=0;
+    foreach($points as $point){
+        $sum=$sum+$point->point;
+    }
+    $averagepoint=$sum/count($points);
+
         $hall_sanses=Hall_sanse::where('event_id',$event->id)->get();
-        // dd($event);
-           
-            // $venues=Venue::where('venue_name','like','%'.'سینما' .'%')->get(); 
-            // dd($venues);
-        $mgenres=Genre::where('genre_type','movie')->get();
-        $tgenres=Genre::where('genre_type','theatre')->get();
-        $cgenres=Genre::where('genre_type','concert')->get();
+      
         $comments=Comment::where('events_id',$event->id)->where('cstatuses_id',1)->get();
-        return view('events.single_event')->with('event',$event)->with('mgenres',$mgenres)
-        ->with('tgenres',$tgenres)->with('cgenres',$cgenres)
-        ->with('hall_sanses',$hall_sanses)->with('comments',$comments);
+
+        return view('events.single_event',compact(['event','hall_sanses','comments','averagepoint','similars']));
 
     }
 

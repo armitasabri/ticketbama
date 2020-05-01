@@ -11,7 +11,7 @@ class User extends Model
 
 
     public function Comment(){
-        return $this->hasMany('App\Models\Comment','id','user_id');
+        return $this->hasMany('App\Models\Comment','id','users_id');
        }
 
        public function Event_rating(){

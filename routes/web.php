@@ -1,5 +1,6 @@
 <?php
-
+use Shetabit\Payment\Invoice;
+use Shetabit\Payment\Facade\Payment;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +19,9 @@
 
 // Route::get('/blog','FrontController@blog')->name('blog');
 // Route::get('/contact_with_us','FrontController@contactus')->name('contactus');
-Route::get('/m_events_category','FrontController@movie_eventscategory')->name('showmoviecategory');
-Route::get('/t_events_category','FrontController@theatre_eventscategory')->name('showtheatrecategory');
-Route::get('/c_events_category','FrontController@concert_eventscategory')->name('showconcertcategory');
+// Route::get('/m_events_category','FrontController@movie_eventscategory')->name('showmoviecategory');
+// Route::get('/t_events_category','FrontController@theatre_eventscategory')->name('showtheatrecategory');
+// Route::get('/c_events_category','FrontController@concert_eventscategory')->name('showconcertcategory');
 // Route::get('/single_event','FrontController@single_event')->name('single_event');
 // Route::get('/seat_section','FrontController@seat_section')->name('seat_section');
 // Route::get('/seats','FrontController@seats')->name('seats');
@@ -61,8 +62,8 @@ Route::get('/all_populars','EventController@allpopulars')->name('allpopulars');
 
 
 // ====== SeatController =============
-Route::get('/seat_section','SeatController@seat_section')->name('seat_section');
-Route::get('/seats','SeatController@seats')->name('seats');
+Route::get('/seat_section/{id}','SeatController@seat_section')->name('seat_section');
+Route::get('/seats/{id}/{section}/','SeatController@seats')->name('seats');
 Route::get('/myseat','SeatController@myseat')->name('myseat');
 Route::post('/seat_reserved','SeatController@seat_reserved')->name('seat_reserved');
 Route::get('/seat_sold','SeatController@seat_sold')->name('seat_sold');
@@ -71,9 +72,14 @@ Route::get('/seat_plan','SeatController@seatplan')->name('seatplan');
 
 
 // ===== TicketingController ==========
-Route::get('/section_select','TicketingController@section_select')->name('section_select');
-Route::get('/prepay_ticket','TicketingController@prepay_ticket')->name('prepay_ticket');
-Route::get('/final_ticket','TicketingController@final_ticket')->name('final_ticket');
+Route::get('/section_select/{id}','TicketingController@section_select')->name('section_select');
+Route::get('/prepay_ticket/{id}','TicketingController@prepay_ticket')->name('prepay_ticket');
+Route::get('/final_ticket/{fee}/{hall_sanse}/{place}','TicketingController@final_ticket')->name('final_ticket');
+// Route::get('/verify','TicketingController@verify')->name('verify');
+
+Route::get('/verify','TicketingController@verify');
+    
+
 
 
 
@@ -84,6 +90,8 @@ Route::get('/blog','SiteController@blog')->name('blog');
 Route::post('/contactus_save','SiteController@contactus_save')->name('contactus_save');
 Route::post('/search_result','SiteController@search_result')->name('search_result');
 Route::get('/upcoming_news','SiteController@upcoming_news')->name('upcoming');
+Route::get('/access_denied','SiteController@noaccess');
+
 
 
 
@@ -112,13 +120,42 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/laravelhome', 'HomeController@index2')->name('l_home');
 
 
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
+// =================== Voyager Extension ================= //
+// Route::group(['prefix' => 'voy'], function () {
+//     Voyager::routes();
+// });
 
 
 //==========================arrange seats by Admin===============
 Route::get('/seat_inputs', 'SeatController@index')->name('seat_inputs');
 Route::post('/admin_seat', 'SeatController@adminseat')->name('admin_seat');
+Route::post('/created_plan', 'SeatController@created_plan')->name('created_plan');
+Route::get('/final_view', 'SeatController@finalview')->name('final_view');
 
+
+
+
+// ======================= Admin Controllers ========================= //
+
+// Route::get('/admin_home', 'Admin\HomeController@index')->name('admin_home');
+
+Route::namespace('Admin')->prefix('admin')->name('admin_')->group(function(){
+
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('/users', 'UserController');
+    Route::resource('/comments', 'CommentController');
+    Route::get('/comment_datatables', 'CommentController@datatable')->name('comments.datatable');
+    Route::resource('/events', 'EventController');
+    Route::get('/input_seats', 'SeatController@index')->name('input_seats');
+    Route::get('/findvenuehalls','SeatController@find_venue_halls')->name('find_venue_halls');
+    Route::get('/findhallseatsections','SeatController@find_hall_seatsection')->name('find_hall_seatsections');
+    Route::post('/insert', 'SeatController@insertseat')->name('insert_seat');
+    Route::post('/make_seat_plan', 'SeatController@make_seat_plan')->name('seat_plan');
+
+
+
+
+    
+
+
+ });

@@ -27,7 +27,7 @@
 
                     </div>
                 </div>
-                <div style="margin-top: 30px; margin-right: 40px;">
+                {{-- <div style="margin-top: 30px; margin-right: 40px;">
                     <div align="right">
                         <p class="mpoint">امتیاز : X</p>
                         <a href="">
@@ -55,6 +55,45 @@
                     <p class="mfilmdirector" dir="rtl" align="right">کارگردان: &nbsp;{{$event->director}}</p>
                     <div class="more-speaker-btn text-center mt-20  fadeInUp" data-wow-delay="300ms">
                         <a href="#msans" style="color: white;"><button class="btn  mbuy" style="font-size: 18px;">
+                                <i class="zmdi zmdi-shopping-cart"
+                                    style="margin-left:10px;font-size: 15px;color: white;"></i>خرید
+                                بلیط</button></a>
+                    </div>
+                    
+                </div> --}}
+
+                <div style="margin-top: 30px; margin-right: 40px;">
+                    <p class="mpoint" align="right">امتیاز : {{$averagepoint}}</p>
+                    @if(Auth::check())
+                    <div align="right" class="rate">
+                        {{-- <a href=""> --}}
+                            <span class="fa fa-star " id="1" data-value="{{Auth::user()->id}},{{$event->id}}" style="font-size:20px;"></span>
+
+                        {{-- </a> --}}
+                        {{-- <a href=""> --}}
+                            <span class="fa fa-star " id="2" data-value="{{Auth::user()->id}},{{$event->id}}" style="font-size:20px;"></span>
+
+                        {{-- </a> --}}
+                        {{-- <a href=""> --}}
+                            <span class="fa fa-star " id="3" data-value="{{Auth::user()->id}},{{$event->id}}" style="font-size:20px;"></span>
+
+                        {{-- </a> --}}
+                        {{-- <a href=""> --}}
+                            <span class="fa fa-star" id="4" data-value="{{Auth::user()->id}},{{$event->id}}" style="font-size:20px;"></span>
+
+                        {{-- </a> --}}
+                        {{-- <a href=""> --}}
+                            <span class="fa fa-star" id="5" data-value="{{Auth::user()->id}},{{$event->id}}" style="font-size:20px;"></span>
+
+                        {{-- </a> --}}
+                    </div>
+                    @else
+                    <p style="color:antiquewhite;">برای ثبت امتیاز با کاربری خود وارد شوید</p>
+                    @endif
+                    <p class="mfilmname mt-1" dir="rtl" align="right">{{$event->title}}</p>
+                    <p class="mfilmdirector" dir="rtl" align="right">کارگردان: &nbsp;{{$event->director}}</p>
+                    <div class="more-speaker-btn text-center mt-20  fadeInUp" data-wow-delay="300ms">
+                        <a href="#mshows" style="color: white;"><button class="btn  mbuy" style="font-size: 18px;">
                                 <i class="zmdi zmdi-shopping-cart"
                                     style="margin-left:10px;font-size: 15px;color: white;"></i>خرید
                                 بلیط</button></a>
@@ -94,15 +133,7 @@
                                 <img src="../assets/img/feature-movies/{{$photo->path}}" alt="" class="border shadow" style="height:100%">
                         </div>
                     @endforeach
-                    {{-- <div class="col-4 " style="height:190px">
-                        <img src="{{asset('assets/img/mimg/nimrooz1.jpg')}}" alt="" class="border shadow" style="height:100%">
-                    </div>
-                    <div class="col-4" style="height:190px">
-                        <img src="{{asset('assets/img/mimg/nimrooz2.jpg')}}" alt="" class="border shadow" style="height:100%">
-                    </div>
-                    <div class="col-4" id="msans" style="height:190px">
-                        <img src="{{asset('assets/img/mimg/nimrooz3.jpg')}}" alt="" class="border shadow" style="height:100%">
-                    </div> --}}
+          
                 </div>
             </div>
         </div>
@@ -134,7 +165,7 @@
                             -&nbsp;سالن &nbsp;{{$hall->name}}</p>
                         <div class="d-flex justify-content-end">
                             <div>
-                                <a href="{{route('seat_section')}}" class="px-3" style="color: white;">
+                                <a href="{{route('seat_section',['id'=>$hall_sanse->id])}}" class="px-3" style="color: white;">
                                     <button class="px-3 py-1 ml-4"
                                         style="border-radius: 23px;background-color: rgb(57,132,60);color: white;border: none;">
                                         نمایش سالن
@@ -173,37 +204,20 @@
                 <div class="owl-carousel owl-theme  mslider col-12 "
                     style="display:block !important;height: 300px;">
                     <!-- ===each slide  -->
-                    <div class="item">
+                    @foreach ($similars as $similar)
+                       <div class="item">
 
-                        <a href="#"><img src="{{asset('assets/img/feature-movies/African Violet.jpg')}}" alt="" style="height: 190px;"></a>
-                        <div class="text-center py-3">
+                       <a href="{{route('single_event',['id'=>$similar->id])}}"><img src="../storage/{{$similar->fileimage}}" alt="" style="height: 190px;"></a>
+                                <div class="text-center py-3">
 
-                            <p style="color: black;">نام رویداد</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="#"><img src="{{asset('assets/img/feature-movies/Pig _ poster by Erfan Behkar.jpg')}}" alt="" style="height: 190px;"></a>
-                        <div class="text-center py-3">
-
-                            <p style="color: black;">نام رویداد</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <a href="#"><img src="{{asset('assets/img/feature-movies/Poster by Mohammad Hossein Houshmandi.jpg')}}" alt="" style="height: 190px;"></a>
-                        <div class="text-center py-3">
-
-                            <p style="color: black;">نام رویداد</p>
-                        </div>
-                    </div>
-                    <div class="item">
-
-                        <a href="#"><img src="{{asset('assets/img/feature-movies/jahan.jpg')}}" alt="" style="height: 190px;">
-                        </a>
-                        <div class="text-center py-3">
-
-                            <p style="color: black;">نام رویداد</p>
-                        </div>
-                    </div>
+                                    <p style="color: black;">{{$similar->title}}</p>
+                                </div>
+                        </div>  
+                    @endforeach
+                   
+                   
+                    
+                 
 
 
 
@@ -224,7 +238,7 @@
         <p  style="color:#DF42B1;font-size:20px"> {{ \Session::get('success')}}</p> 
         
         @endif
-            @foreach ($comments as $comment)
+            @forelse ($comments as $comment)
             <div class="d-flex col-12 border shadow mb-2">
                 <div class="col-1 pt-3">
                     <img src="{{asset('assets/img/mimg/unknownuser2.png')}}" alt="">
@@ -234,10 +248,10 @@
                    <p align="right"><b>{{$comment->fullname}}</b></p>
                    <p align="right">{{$comment->comment}}</p>
                 </div> 
-                
-                
-            </div>
-            @endforeach
+               
+            </div> 
+                @empty {{"نظری وجود ندارد"}}
+            @endforelse
             <!-- insert new comment -->
             <div class="mt-5">
                 <p align="right">نظر خود را وارد کنید.</p>

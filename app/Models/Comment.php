@@ -8,7 +8,9 @@ class Comment extends Model
 {
     //
     // public $table = "Comment";
-
+    protected $fillable = [
+        'comment', 'users_id', 'events_id', 'fullname','cstatuses_id'
+    ];
     public function Event(){
 
         return $this->belongsTo('App\Models\Event' ,'events_id', 'id');
@@ -16,7 +18,7 @@ class Comment extends Model
 
     public function User(){
 
-        return $this->belongsTo('App\Models\User' ,'user_id', 'id');
+        return $this->belongsTo('App\Models\User','users_id','id');
     }
 
     public function Cstatus(){

@@ -11,7 +11,7 @@ class Seat extends Model
 
     public function Status(){
 
-        return $this->belongsTo('App\Models\Status' ,'status_id', 'id');
+        return $this->belongsTo('App\Models\Status');
     }
 
     public function Sans(){
@@ -26,4 +26,11 @@ class Seat extends Model
 
         return $this->hasMany('App\Models\Status' ,'id', 'seat_id');
     }
+
+    public function Seat_hall_sanse(){
+        return $this->hasMany('App\Models\Seat_hall_sanse');
+    
+    }
+
+    
 }

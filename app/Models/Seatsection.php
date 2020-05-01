@@ -11,7 +11,7 @@ class Seatsection extends Model
 
     public function Hall(){
 
-        return $this->belongsTo('App\Models\Hall' ,'hall_id', 'id');
+        return $this->belongsTo('App\Models\Hall');
     }
 
     public function Order(){
@@ -21,7 +21,7 @@ class Seatsection extends Model
 
     public function Price(){
 
-        return $this->belongsTo('App\Models\Price' );
+        return $this->belongsTo('App\Models\Price','prices_id','id' );
     }
 
     public function Seat(){

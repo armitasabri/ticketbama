@@ -9,8 +9,14 @@ class Status extends Model
     //
     // public $table = "Status";
     
-    public function Seats(){
+    public function Seat_hall_sanse(){
 
-        return $this->hasMany('App\Models\Seats' ,'id', 'status_id');
+        return $this->hasMany('App\Models\Seat_hall_sanse');
     }
+
+    public function Seat(){
+
+        return $this->hasMany('App\Models\Seat');
+    }
+
 }

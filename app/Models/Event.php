@@ -18,11 +18,11 @@ class Event extends Model
    }
 
    public function Genre(){
-    return $this->belongsTo('App\Models\Genre','genre_id','id');
+    return $this->belongsTo('App\Models\Genre','genres_id','id');
    }
 
    public function Category(){
-    return $this->belongsTo('App\Models\Category','categories_id', 'id');
+    return $this->belongsTo('App\Models\Category','categories_id','id');
    }
 
    public function Blog(){

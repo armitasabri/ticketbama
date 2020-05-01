@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
+
+
 class LoginController extends Controller
 {
     /*
@@ -41,16 +45,20 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        Session::put('preUrl',URL::previous());
     }
 
     protected function authenticated() {
         if (Auth::user()->role_id===1) {
            
-            return redirect('/admin');
+            return redirect('/admin/home');
         } 
-        else{
-            return redirect('/profile');
-            
+        
+}
+
+
+        public function redirectTo(){
+    return Session::get('preUrl') ? Session::get('preUrl') : $this->redirectTo;
         }
-   }
+   
 }

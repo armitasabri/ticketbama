@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="container" style="min-height:800px;padding-top:30vh;padding-right:20vw">
-    @for ($i=0;$i<$rows;$i++)
+    @for ($i=1;$i<=$rows;$i++)
 <div id="{{$i}}" class="row ">
-          @for ($j=0;$j<$cols;$j++)
-      <div id="{{$j}}" class="col-2 seats">
+          @for ($j=1;$j<=$cols;$j++)
+      <div id="{{$i}}{{$j}}" class="col seats">
       {{$i}} {{$j}}<img class="" src="{{asset('assets/img/seats/seat1.png')}}" alt="" style="height:50px;width:50px">
        </div>
                 
@@ -23,7 +23,7 @@
  </div>
 
  <div>
-    <button id="calculate">محاسبه</button>
+    <button id="calculate">ذخیره در دیتابیس</button>
 </div>
  </div>
 
@@ -33,15 +33,20 @@
 //      $('.seats').click(function(){
 //      $(this).toggleClass( "reserved" )
 //  })
- $('.seats').click(function(){
-     $(this).addClass( "selected" )
+ $('.seats').dblclick(function(){
+     $(this).toggleClass( "selected" )
  })
+
+ $('.seats').click(function(){
+     $(this).toggleClass( "reserved" )
+ })
+
 
  $('#deletebutton').click(function(e) {
 
 e.preventDefault();
-$(this).addClass( "empty" )
-$(".selected").addClass('')empty();
+$(".selected").addClass( "empty" )
+$(".empty").empty();
 
 
  });
@@ -49,17 +54,42 @@ $(".selected").addClass('')empty();
  $('#movebutton').click(function(e) {
 
 e.preventDefault();
-$(".reserved").addClass('forward');
+$(".reserved").addClass("forward");
 
 
  });
 
  $('#calculate').click(function(e) {
+    e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+
+    var forwarded = $('.forward').map(function () { return this.id; }).get();
+    var deleted = $('.empty').map(function () { return this.id; }).get();
+
+// var selectAllClass= document.getElementsByClassName("forward");
+console.log(deleted);
 
 
-
-var selectAllClass= document.getElementsByClassName("forward");
-console.log(selectAllClass);
+$.ajax({
+  url: "/created_plan",
+  dataType: 'json',
+  type: "post",
+  data: {
+    deletes: deleted,
+    forwards: forwarded
+    
+  },
+  success: function(response, status) {
+    //  alert("پنل انتخابی شما با موفقیت ذخیره شد");
+  },
+  // error: function(XMLHttpRequest, textStatus, erroeThrown) {
+  //   console.log('AJAX error:' + textStatus)
+  // }
+});
  });
 
 

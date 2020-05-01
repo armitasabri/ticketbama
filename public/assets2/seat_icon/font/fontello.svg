@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2020 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="cinema" unicode="&#xe800;" d="M266 69a31 31 0 0 0-32-31h-62a31 31 0 0 0-31 31v328a31 31 0 0 0 31 31h62a31 31 0 0 0 32-31m-32 31h-62a31 31 0 0 1-31-31v-94h125v94a31 31 0 0 1-32 31z m500-359a31 31 0 0 1 32-31h62a31 31 0 0 1 31 31v328a31 31 0 0 1-31 31h-62a31 31 0 0 1-32-31m-122-462h-224l15 149 6 54h183l5-54z m-15 149h-194l6 54h183z m137 641v-516h-468v516a78 78 0 0 0 78 78h312a78 78 0 0 0 78-78z m32-297h62a31 31 0 0 0 31-31v-94h-125v94a31 31 0 0 0 32 31z m-33 313l-31-9a189 189 0 0 1-118-101h-167a189 189 0 0 1-119 101l-31 9a78 78 0 0 1-1-16v-16l24-7a157 157 0 0 0 101-89v-388h31v94h156v-94h31v388a157 157 0 0 0 101 89l24 7v16a78 78 0 0 1-1 16z m-155-391h-156v63h156z m0 94h-156v62h156z m0 94h-156v62h156z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>

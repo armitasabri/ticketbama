@@ -21,7 +21,7 @@ input[type=number]::-webkit-outer-spin-button {
                         <!-- event image -->
                         <div class="speaker-single-thumb">
 
-                            <img src="{{asset('assets/img/feature-movies/Macerated Nimrod _ poster by The 3X4.jpg')}}" alt="" style="height: 280px;width:100%;">
+                            <img src="../storage/{{$hall_sanse->Event->fileimage}}" alt="" style="height: 280px;width:100%;">
                         </div>
 
 
@@ -29,9 +29,9 @@ input[type=number]::-webkit-outer-spin-button {
                 </div>
                 <div style="margin-top: 60px; margin-right: 40px;">
 
-                    <p class="mfilmname mt-2" dir="rtl" align="right">نام رویداد</p>
-                    <p align="right" class="secsalonname">سه شنبه - ساعت 17</p>
-                    <p align="right" class="secsalonname">سینما آزادی - سالن 1</p>
+                <p class="mfilmname mt-2" dir="rtl" align="right">{{$hall_sanse->Event->title}}</p>
+                <p align="right" class="secsalonname">{{$hall_sanse->sanse->name}}</p>
+                <p align="right" class="secsalonname">{{$hall_sanse->hall->name}}</p>
 
                 </div>
 
@@ -40,19 +40,23 @@ input[type=number]::-webkit-outer-spin-button {
         <!-- ==== End of Poster Area ==== -->
         <!-- === Section_Select Area -->
         <div class="row my-5 text-center">
-
+           
             <div class="col-11 border shadow pt-4 ">
-            <form action="{{route('prepay_ticket')}}" method="get" align="right">
+            @guest
+             <p>لطفا ابتدا با حساب کاربری خود وارد شوید.</p>
+            @else
+            <form action="{{route('prepay_ticket',['id'=>$hall_sanse->id])}}" method="get" align="right">
+                {{ csrf_field() }}
                     <p align="right"><i class="zmdi zmdi-triangle-down"
                             style="margin-left: 7px;color:#df42b1;"></i>لطفا جایگاه مورد نظر خود را انتخاب کنید.</p>
-                    <select name="" id="" class="p-2 mr-5  schedule-time-place">
-                        <option value="">جایگاه 1</option>
-                        <option value="">جایگاه 2</option>
+                    <select name="jaygah" id="" class="p-2 mr-5  schedule-time-place">
+                        <option value="seatsection1">جایگاه 1</option>
+                        <option value="seatsection2">جایگاه 2</option>
                     </select>
                     <br><br>
                     <p align="right"><i class="zmdi zmdi-triangle-down"
                             style="margin-left: 7px;color:#df42b1;"></i>تعداد بلیط :</p>
-                    <input type="number" min="1" class="p-1 mr-5" value="1">
+                    <input name="tedad" type="number" min="1" class="p-1 mr-5" value="1">
                     <br><br><br>
                     <input type="submit" value="ادامه خرید" class="px-3 py-2 msend mr-5">
                     <br><br><br>
@@ -60,6 +64,7 @@ input[type=number]::-webkit-outer-spin-button {
                 </form>
 
             </div>
+            @endguest
 
 
 

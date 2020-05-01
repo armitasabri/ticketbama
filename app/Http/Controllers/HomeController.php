@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Genre;
 use App\Models\Event_rating;
+use App\Models\Comment;
 
 class HomeController extends Controller
 {
@@ -26,19 +27,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $events=Event::with('Photo')->get();
+        
         $events=Event::where('categories_id',1)->take(4)->get();
         $theatres=Event::where('categories_id',2)->take(4)->get();
         $concerts=Event::where('categories_id',3)->take(4)->get();
-        // dd($theatres);
-        // $mgenres=Genre::where('genre_type','movie')->get();
-        // $tgenres=Genre::where('genre_type','theatre')->get();
-        // $cgenres=Genre::where('genre_type','concert')->get();
+       
 
          $populars=Event_rating::where('stars','>=',4)->distinct('events_id')->get(['events_id']);
-        //  dd($populars);
+        $comments=Comment::where('cstatuses_id',1)->get();
         
-        return view('myhome')->with('events',$events)->with('populars',$populars)->with('theatres',$theatres)->with('concerts',$concerts);
+        return view('myhome')->with('events',$events)->with('populars',$populars)
+        ->with('theatres',$theatres)->with('concerts',$concerts)->with('comments',$comments);
         // 
         // ->with('mgenres',$mgenres)->with('tgenres',$tgenres)
         // ->with('cgenres',$cgenres);

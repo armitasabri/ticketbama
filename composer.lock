@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3821364c4981cc02ee30be7d13237977",
+    "content-hash": "da1650ee8fa74007de08f14397e9bb13",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -946,6 +946,124 @@
                 "trusted proxy"
             ],
             "time": "2020-02-22T01:51:47+00:00"
+        },
+        {
+            "name": "guzzlehttp/guzzle",
+            "version": "6.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aab4ebd862aa7d04f01a4b51849d657db56d882e",
+                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.6.1",
+                "php": ">=5.5",
+                "symfony/polyfill-intl-idn": "^1.11"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
+                "psr/log": "^1.1"
+            },
+            "suggest": {
+                "psr/log": "Required for using the Log middleware"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2020-04-18T10:38:46+00:00"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "time": "2016-12-20T10:07:11+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -2671,6 +2789,135 @@
             "time": "2020-02-14T15:25:33+00:00"
         },
         {
+            "name": "shetabit/payment",
+            "version": "v2.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shetabit/payment.git",
+                "reference": "5c0b46ffd389a57a3e1fb4ca23b9646a1a71ce50"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shetabit/payment/zipball/5c0b46ffd389a57a3e1fb4ca23b9646a1a71ce50",
+                "reference": "5c0b46ffd389a57a3e1fb4ca23b9646a1a71ce50",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": ">=6.2",
+                "illuminate/broadcasting": "^5.8|^6.0|^7.0",
+                "illuminate/support": "^5.8|^6.0|^7.0",
+                "php": ">=7.2",
+                "ramsey/uuid": "^3.7|^3.8|^3.9|^4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.3|^5.0",
+                "phpunit/phpunit": "^8.0|^9.0",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Shetabit\\Payment\\Provider\\PaymentServiceProvider"
+                    ],
+                    "aliases": {
+                        "Payment": "Shetabit\\Payment\\Facade\\Payment"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Shetabit\\Payment\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mahdi Khanzadi",
+                    "email": "khanzadimahdi@gmail.com",
+                    "homepage": "https://github.com/shetabit",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Payment Gateway Integration Package",
+            "homepage": "https://github.com/shetabit/payment",
+            "keywords": [
+                "Bank",
+                "Meli",
+                "Payline",
+                "gateway",
+                "iranKish payment gateway",
+                "irankish",
+                "jahanPay payment gateway",
+                "jahanpay",
+                "jibit",
+                "jibit payment gateway",
+                "laravel iranKish",
+                "laravel iranKish package",
+                "laravel jahanPay",
+                "laravel jahanPay package",
+                "laravel jibit",
+                "laravel jibit package",
+                "laravel meli",
+                "laravel meli package",
+                "laravel mellat",
+                "laravel mellat package",
+                "laravel melli bank payment package",
+                "laravel parsian",
+                "laravel parsian package",
+                "laravel pasargad",
+                "laravel pasargad package",
+                "laravel pay",
+                "laravel pay package",
+                "laravel payline",
+                "laravel payline package",
+                "laravel payment gateway",
+                "laravel payment package",
+                "laravel paypal",
+                "laravel paypal package",
+                "laravel sadad",
+                "laravel sadad package",
+                "laravel saderat",
+                "laravel saderat package",
+                "laravel saman",
+                "laravel saman package",
+                "laravel shaparak",
+                "laravel shaparak package",
+                "laravel zarinpal",
+                "laravel zarinpal package",
+                "meli payment gateway",
+                "mellat",
+                "mellat payment gateway",
+                "melli",
+                "parsian",
+                "parsian payment gateway",
+                "pasargad",
+                "pasargad payment gateway",
+                "pay",
+                "pay payment gateway",
+                "payline payment gateway",
+                "payment",
+                "payment gateway",
+                "paypal",
+                "paypal payment gateway",
+                "sadad",
+                "sadad payment gateway",
+                "saderat",
+                "saderat payment gateway",
+                "saman",
+                "saman payment gateway",
+                "shaparak",
+                "shaparak payment gateway",
+                "shetabit",
+                "zarinpal",
+                "zarinpal payment gateway"
+            ],
+            "time": "2020-04-23T12:24:40+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.2.3",
             "source": {
@@ -4321,6 +4568,77 @@
                 "environment"
             ],
             "time": "2019-09-10T21:37:39+00:00"
+        },
+        {
+            "name": "yajra/laravel-datatables-oracle",
+            "version": "v9.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-datatables.git",
+                "reference": "b0b9e2c37b5a17ca35bb2c6d3927bf6176393229"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/b0b9e2c37b5a17ca35bb2c6d3927bf6176393229",
+                "reference": "b0b9e2c37b5a17ca35bb2c6d3927bf6176393229",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.8.*|^6|^7",
+                "illuminate/filesystem": "5.8.*|^6|^7",
+                "illuminate/http": "5.8.*|^6|^7",
+                "illuminate/support": "5.8.*|^6|^7",
+                "illuminate/view": "5.8.*|^6|^7",
+                "php": "^7.1.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.8"
+            },
+            "suggest": {
+                "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTables.",
+                "yajra/laravel-datatables-editor": "Plugin to use DataTables Editor (requires a license).",
+                "yajra/laravel-datatables-fractal": "Plugin for server-side response using Fractal.",
+                "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTables."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Yajra\\DataTables\\DataTablesServiceProvider"
+                    ],
+                    "aliases": {
+                        "DataTables": "Yajra\\DataTables\\Facades\\DataTables"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yajra\\DataTables\\": "src/"
+                },
+                "files": [
+                    "src/helper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "jQuery DataTables API for Laravel 4|5",
+            "keywords": [
+                "datatables",
+                "jquery",
+                "laravel"
+            ],
+            "time": "2020-04-23T01:21:11+00:00"
         }
     ],
     "packages-dev": [

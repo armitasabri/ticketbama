@@ -37,14 +37,14 @@
                                 
                             </ul>
                         </li>
-                         <li><a href="{{route('showtheatrecategory')}}">تئاتر‌ها</a>
+                         <li><a href="#">تئاتر‌ها</a>
                             <ul class="dropdown">
                                 @foreach ($tgenres as $tgenre)
                             <li><a  href="{{route('t_events',['id'=>$tgenre->id])}}">{{$tgenre->name}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
-                         <li><a href="{{route('showconcertcategory')}}">کنسرت‌ها</a>
+                         <li><a href="#">کنسرت‌ها</a>
                             <ul class="dropdown">
                                 @foreach ($cgenres as $cgenre)
                                 <li><a  href="{{route('c_events',['id'=>$cgenre->id])}}">{{$cgenre->name}}</a></li>
@@ -92,7 +92,7 @@
                            </li>
                             @if (Auth::user()->role_id===1)
                              <li>
-                            <a  href="{{ url('/admin') }}" >
+                            <a  href="{{ url('/admin/home') }}" >
                                 {{ __(' مشاهده پنل مدیریت') }}
                             </a>     
                             </li>

@@ -15,8 +15,14 @@
 <link rel="stylesheet" href="{{asset('assets/mstyle.css')}}">
 <link rel="stylesheet" href="{{asset('assets/S-style.css')}}">
 <link rel="stylesheet" href="{{asset('assets/loaderstyle.css')}}">
+<link rel="stylesheet" href="{{asset('assets/flaticon2/font/flaticon.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('assets/cinemaseat/font/style.css')}}"> --}}
+<link rel="stylesheet" href="{{asset('assets2/chairr/css/fontello.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('assets/seat_icon/css/fontello.css')}}"> --}}
+
 <script src="{{asset('assets/js/loaderjs.js')}}"></script>
 <script src="{{asset('assets/js/jquery-3.4.1.min.js')}}"></script>
+<script src="{{asset('assets/js/aseat.js')}}"></script>
 
 <link rel="stylesheet" href="{{asset ('assets/css/bootstrap-v4-rtl-master/bootstrap-rtl.css')}} ">
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>

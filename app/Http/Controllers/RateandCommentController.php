@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\User;
 use App\Models\Comment;
+use App\Models\Event_rating;
 
 class RateandCommentController extends Controller
 {
@@ -44,9 +45,28 @@ class RateandCommentController extends Controller
     }
 
     public function rate_save(){
-        
+        $rate=$_GET['rate'];
+        $value=$_GET['value'];
+        $user_event=explode(',',$value);
+        $user=$user_event[0];
+        $event=$user_event[1];
+        $exist=Event_rating::where('events_id',$event)->where('users_id',$user)->get();
+        if(count($exist)==0){
+            Event_rating::create([
+            "stars"=>$rate,
+            "users_id"=>$user,
+            "events_id"=>$event
+        ]);
+        $message="امتیاز شما با موفقیت ثبت شد";
+        }else{
+        $message="امتیاز شما برای این رویداد قبلا ثبت شده است";
+        }
+
+        return response()->json(['success'=>$message]);
     }
 
+
+    
     public function rate_show(){
         
     }

@@ -135,7 +135,7 @@ margin-left: 4px;
 }
 
     .reserved{
-   background: green;
+   color: green;
     }
 
     .unselect{
@@ -147,6 +147,10 @@ margin-left: 4px;
     }
 
     .forward{
-       right: 70px;;
+      right: 45px;
     }
+
+    /* .empty{
+        display: none;
+    } */
     

@@ -9,8 +9,8 @@ class Category extends Model
     //
     // public $table = "Category";
 
-    public function Events(){
+    public function Event(){
 
-        return $this->hasMany('App\Models\Event' ,'id', 'categories_id');
+        return $this->hasMany('App\Models\Event','id','categories_id');
     }
 }

@@ -13,7 +13,7 @@
                         <!-- event image -->
                         <div class="speaker-single-thumb">
 
-                            <img src="{{asset('assets/img/feature-movies/Macerated Nimrod _ poster by The 3X4.jpg')}}" alt="" style="height: 280px;width:100%;">
+                            <img src="../../storage/{{$hall_sanse->Event->fileimage}}" alt="" style="height: 280px;width:100%;">
 
                         </div>
 
@@ -22,9 +22,9 @@
                 </div>
                 <div style="margin-top: 60px; margin-right: 40px;">
 
-                    <p class="mfilmname mt-2" dir="rtl" align="right">نام رویداد</p>
-                    <p align="right" class="secsalonname">سه شنبه - ساعت 17</p>
-                    <p align="right" class="secsalonname">سینما آزادی - سالن 1</p>
+                <p class="mfilmname mt-2" dir="rtl" align="right">{{$hall_sanse->Event->title}}</p>
+                    <p align="right" class="secsalonname">{{$hall_sanse->sanse->name}}</p>
+                    <p align="right" class="secsalonname">{{$hall_sanse->hall->name}}</p>
 
                 </div>
 
@@ -36,27 +36,28 @@
 
             <div class="col-11 border shadow pt-4 ">
                 <p align="right" style="font-size: 18px;"><i class="zmdi zmdi-triangle-down"
-                        style="margin-left: 7px;color:#df42b1;"></i>جایگاه انتخابی شما : جایگاه 2</p>
+                        style="margin-left: 7px;color:#df42b1;"></i>جایگاه انتخابی شما : {{$selected_section}} </p>
                 <div class="col-4">
                     <hr>
                 </div>
                 <br>
                 <p align="right" style="font-size: 18px;"><i class="zmdi zmdi-triangle-down"
-                        style="margin-left: 7px;color:#df42b1;"></i>تعداد بلیط : 2</p>
+                style="margin-left: 7px;color:#df42b1;"></i>تعداد بلیط : {{$tedad}}</p>
                 <div class="col-4">
                     <hr>
                 </div>
 
                 <br>
                 <p align="right" style="font-size: 18px;"><i class="zmdi zmdi-triangle-down"
-                        style="margin-left: 7px;color:#df42b1;"></i>مبلغ نهایی : 2000000 ریال</p>
+                style="margin-left: 7px;color:#df42b1;"></i>مبلغ نهایی : {{$total}} تومان</p>
                 <div class="col-4">
                     <hr>
                 </div>
 
                 <br><br>
-                <a href="#" class="px-3" style="color: white;">
-                    <button class="px-3 py-2 ml-4"
+                <a href="{{route('final_ticket',['fee'=>$total,'hall_sanse'=>$hall_sanse->id,'place'=>$selected_section])}}" class="px-3" style="color: white;">
+                <button  class="px-3 py-2 ml-4" 
+
                         style="border-radius: 23px;background-color: rgb(57,132,60);color: white;border: none;">
                         پرداخت
                     </button></a>

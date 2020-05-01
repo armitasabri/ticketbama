@@ -12,6 +12,6 @@ class Genre extends Model
 
     public function Event(){
 
-        return $this->hasMany('App\Models\Event' ,'id', 'event_id');
+        return $this->hasMany('App\Models\Event','id','genres_id');
     }
 }

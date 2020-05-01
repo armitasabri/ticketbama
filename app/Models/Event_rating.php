@@ -9,6 +9,9 @@ class Event_rating extends Model
     //
 
     // public $table = "Event_rating";
+    protected $fillable = [
+        'description', 'stars', 'events_id', 'users_id'
+    ];
 
     public function Event(){
 

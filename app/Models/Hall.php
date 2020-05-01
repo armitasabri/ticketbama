@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hall extends Model
 {
-    //
+  
 
     
     // public $table = "Hall";
 
     public function Seatsection(){
 
-        return $this->hasMany('App\Models\Seatsection' ,'id', 'seatsection_id');
+        return $this->hasMany('App\Models\Seatsection');
     }
 
     public function Event(){
@@ -27,6 +27,6 @@ class Hall extends Model
     }
 
     public function Hall_sanse(){
-        return $this->hasMany('App\Models\Hall_sanse','id','hall_id');
+        return $this->hasMany('App\Models\Hall_sanse');
     }
 }
