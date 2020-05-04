@@ -12,7 +12,7 @@
                     <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
                         <!-- event image -->
                         <div class="speaker-single-thumb">
-                        <img src="../../storage/{{$hs->event->fileimage}}" alt="" style="height: 280px;width:100%;">
+                        <img src="../../../../storage/{{$hs->event->fileimage}}" alt="" style="height: 280px;width:100%;">
                         </div>
 
 
@@ -30,7 +30,7 @@
         </div>
         <!-- ==== End of Poster Area ==== -->
         <!-- === Section image Area -->
-        <div class="row my-5 text-center">
+        {{-- <div class="row my-5 text-center">
             <!-- <div class="col-11  "> -->
 
             <div class="col-11 border shadow pt-4 ">
@@ -58,7 +58,7 @@
 
 
 
-        </div>
+        </div> --}}
         <!-- ==== End of section image Area ==== -->
 
         <!--  ==== Seats Area ====== -->
@@ -86,35 +86,36 @@
                     @else
 
 
-                    @foreach ($allseats as  $seat) 
+                    @foreach ($myallseats as  $seat) 
 
-
-                    {{-- read status form Seat_hall_sanse table  --}}
-                    @foreach ($seat->Seat_hall_sanse as $item)
-                          @if($item->status_id===1 )
+                     <span style="display:none">  {{$color="none"}}</span> 
+                    
+                    @if($seat->status_id === 2 )
                     <span style="display:none;">  {{$color="red"}}</span>
                     @else
-                   <span style="display:none;">{{$color='none'}}</span> 
+                   <span style="display:none;">{{$color='none'}}</span>
+                
+                  
                     @endif
-                    @endforeach 
                    
-                    @if ($seat->forward== "yes")
-                <div id="{{$seat->id}}" class="col seats target forward">
+                   
+                    @if ($seat->seat->forward== "yes")
+                <div id="{{$seat->seat->id}}" class="col seats target forward p-0">
                       {{-- <img  src="{{asset('assets/img/seats/seat.png')}}" alt="" style="height:50px;width:50px;background-color:{{$color}}"> --}}
                     
                         <span class="icon-chairr" style="font-size:300%;color:{{$color}}"></span>
                     
                       
                       <span style="display:none;">
-                        {{$seat->id}}
+                        {{$seat->seat->id}}
                       </span>
                      
                         {{-- <i style="display-inline" class="flaticon-chair" ></i>   --}}
                     
                       
                       </div> 
-                     @elseif($seat->empty== "yes" ) 
-                     <div  id="{{$seat->id}}" class="col seats target empty">
+                     @elseif($seat->seat->empty== "yes" ) 
+                     <div  id="{{$seat->seat->id}}" class="col seats target empty p-0">
                       {{-- <img style="display:none;" src="{{asset('assets/img/seats/seat.png')}}" alt="" style="height:50px;width:50px;background-color:{{$color}}"> --}}
                     
                       
@@ -122,12 +123,12 @@
                        
                      
                       <span style="display:none">
-                        {{$seat->id}}
+                        {{$seat->seat->id}}
                       </span>
                       </div>   
                      @else
                   
-                  <div id="{{$seat->id}}" class="col seats target ">
+                  <div id="{{$seat->seat->id}}" class="col seats target p-0">
                    {{-- <img  src="{{asset('assets/img/seats/seat.png')}}" alt="" style="height:50px;width:50px;background-color:{{$color}}"> --}}
                 
                    
@@ -136,7 +137,7 @@
                
                   
                    <span style="display:none">
-                    {{$seat->id}}
+                    {{$seat->seat->id}}
                   </span>
                    </div>   
                       @endif  
@@ -165,25 +166,49 @@
         <!-- ==== End of Buy Area =====-->
 
         <!-- === final ==== -->
+        @guest
+        
+        @else 
         <div class="more-speaker-btn text-center mt-20  fadeInUp " data-wow-delay="300ms">
         <button id="final_select" class="btn  mbuy px-3 py-2" style="font-size: 22px;" href="#mshows">
                     نهایی کردن خرید</button>
         </div>
 
+        <div class="more-speaker-btn text-center mt-20  fadeInUp " data-wow-delay="300ms">
+          <a href="{{route('user_ticket',['order_id'=>$oid])}}">  <button  class="btn  mbuy px-3 py-2" style="font-size: 22px;" href="#mshows">
+                        مشاهده بلیط</button></a>
+            </div>
+
+            {{-- <div class="more-speaker-btn text-center mt-20  fadeInUp " data-wow-delay="300ms">
+                <a href="{{route('final_ticket',['id'=>$hs->id])}}"><button class="btn  mbuy px-3 py-2" style="font-size: 22px;" >
+                      مشاهده بلیط</button></a>
+            </div> --}}
+        @endguest
+        
+
     </div>
 </section>
+
+
+
+
+
+
+
+
+
 
 <script>
     
 
 var columns = {!! json_encode($columns) !!};
 
- 
+ var tedad ={!! json_encode($tedad_bilit) !!};
 
 console.log(columns);
 
 
-// var divs = $("div > div");
+
 var divs = $(".target");
 
     for(var i = 0; i < divs.length; i+=columns) {
@@ -191,10 +216,59 @@ var divs = $(".target");
     }
 
 
-  
- $('.target').click(function(){
-     $(this).toggleClass( "reserved" )
- })
+  // 4 saniye negah midare class reservo
+//  $('.target').click(function(){
+     
+//      $(this).toggleClass( "reserved" ).delay(4000).queue(function(){
+//         $(this).removeClass("reserved").dequeue(); 
+//      });
+//  })
+
+ $('.target').click(function(e){
+     
+    
+     $(this).toggleClass( "reserved" ); 
+    
+
+e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+
+
+    var items = $('.reserved').map(function () { return this.id; }).get();
+     
+console.log(items);
+if ($('.reserved').length <= tedad) {
+     
+    
+$.ajax({
+  url: "/seat_reserved",
+  dataType: 'json',
+  type: "post",
+  data: {
+    ids: items,
+    
+  },
+  success: function(response, status) {
+     alert("صندلی/صندلی های انتخابی شما با موفقیت رزرو شد");
+  },
+  // error: function(XMLHttpRequest, textStatus, erroeThrown) {
+  //   console.log('AJAX error:' + textStatus)
+  // }
+});
+} else {
+      alert("شما  می‌توانید" +tedad+ "صندلی انتخاب نمایید");
+      
+    }
+
+ 
+});
+
+
+
 
 $('#final_select').click(function(e) {
 
@@ -210,8 +284,10 @@ $('#final_select').click(function(e) {
      
 console.log(items);
 
+     
+    
 $.ajax({
-  url: "/seat_reserved",
+  url: "/seat_sold",
   dataType: 'json',
   type: "post",
   data: {

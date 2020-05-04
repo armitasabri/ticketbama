@@ -28,9 +28,16 @@ class User extends Model
     }
 
     public function Role(){
-        return $this->belongsToMany('App\Models\Role');
+        return $this->belongsTo('App\Models\Role');
     }
+
+    
     public function Photo(){
         return $this->morphMany('App\Models\Photo','imageable');
+    }
+
+
+    public function To_do_list(){
+        return $this->belongstoMany('App\Models\To_do_list','user_to_do_lists');
     }
 }

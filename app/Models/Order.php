@@ -11,12 +11,12 @@ class Order extends Model
 
     public function Seatsection(){
 
-        return $this->belongsTo('App\Models\Seatsection' ,'seatsection_id','id' );
+        return $this->belongsTo('App\Models\Seatsection' ,'seatsections_id','id' );
     }
 
     public function Event(){
 
-        return $this->belongsTo('App\Models\Event' ,'event_id', 'id');
+        return $this->belongsTo('App\Models\Event' ,'events_id', 'id');
     }
 
     public function User(){
@@ -26,12 +26,12 @@ class Order extends Model
 
     public function Sanse(){
 
-        return $this->belongsTo('App\Models\Sanse' ,'sanse_id', 'id');
+        return $this->belongsTo('App\Models\Sanse' ,'sanses_id', 'id');
     }
 
     public function Ticket(){
 
-        return $this->hasMany('App\Models\Ticket' ,'id', 'order_id');
+        return $this->hasMany('App\Models\Ticket' ,'id', 'orders_id');
     }
 
     public function Transaction(){

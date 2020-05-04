@@ -16,7 +16,7 @@ class Seatsection extends Model
 
     public function Order(){
 
-        return $this->hasMany('App\Models\Order' ,'id', 'seatsection_id');
+        return $this->hasMany('App\Models\Order' ,'id', 'seatsections_id');
     }
 
     public function Price(){
@@ -28,4 +28,12 @@ class Seatsection extends Model
 
         return $this->hasMany('App\Models\Seat' );
     }
+
+
+    public function Seat_hall_sanse(){
+
+        return $this->hasMany('App\Models\Seat_hall_sanse' );
+    }
+
+    
 }

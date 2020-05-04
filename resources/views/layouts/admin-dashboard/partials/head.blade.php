@@ -22,6 +22,8 @@
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{{asset('assets2/css/style.default.premium.css')}}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
+    {{-- claendar --}}
+<link rel="stylesheet" href="{{asset('assets2/vendor/fullcalendar/fullcalendar.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets2/css/custom.css')}}">
     <!-- Favicon-->
 {{-- <link rel="stylesheet" href="{{asset('assets/S-style.css')}}"> --}}

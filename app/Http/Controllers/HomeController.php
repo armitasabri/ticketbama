@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         
-        $events=Event::where('categories_id',1)->take(4)->get();
+        $events=Event::where('categories_id',1)->take(8)->get();
         $theatres=Event::where('categories_id',2)->take(4)->get();
         $concerts=Event::where('categories_id',3)->take(4)->get();
        

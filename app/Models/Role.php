@@ -10,6 +10,6 @@ class Role extends Model
     // public $table = "Role";
     
     public function User(){
-        return $this->belongsToMany('App\Models\User');
+        return $this->hasMany('App\Models\User');
     }
 }

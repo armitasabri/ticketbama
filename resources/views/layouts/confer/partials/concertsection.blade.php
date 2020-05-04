@@ -11,7 +11,7 @@
         @foreach ($concerts as $concert)
          <div class="col-3 pt-3 hvr-wobble-vertical" style="max-height:25%" >
          <a href="{{'single_event/'.$concert->id}}">
-            <img src="storage/{{$concert->fileimage}}" style="width:100%;height:100%" alt="">
+            <img src="assets/img/feature-movies/{{$concert->fileimage}}" style="width:100%;height:100%" alt="">
          <h5 class="pt-2" style="text-align:center;">{{$concert->title}}</h5>
          </div></a>
          

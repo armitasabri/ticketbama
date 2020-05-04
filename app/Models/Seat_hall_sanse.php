@@ -22,4 +22,9 @@ class Seat_hall_sanse extends Model
 
         return $this->belongsTo('App\Models\Seat');
     }
+
+    public function Seatsection(){
+
+        return $this->belongsTo('App\Models\Seatsection');
+    }
 }

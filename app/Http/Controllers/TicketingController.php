@@ -13,6 +13,7 @@ use Shetabit\Payment\Invoice;
 use Shetabit\Payment\Facade\Payment;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Transaction;
+use App\Models\Ticket;
 use PhpParser\Node\Stmt\Global_;
 use SoapClient;
 
@@ -46,6 +47,7 @@ class TicketingController extends Controller
     public function final_ticket($fee,$hall_sanse,$place){
 
        $hallsanse=Hall_sanse::find($hall_sanse);
+    //    dd($hallsanse);
         $m=intval($fee) ;
         // dd($m);
         // $test=90000;
@@ -109,8 +111,24 @@ class TicketingController extends Controller
     );
     
     if ($result->Status == 100) {
-    // echo 'Transaction success. RefID:'.$result->RefID;
-    return view('ticketing.final_ticket')->with('refID',$result->RefID);
+    $which_event=$order_user->events_id;
+    
+    $which_section=$order_user->seatsections_id;
+    $section=Seatsection::find($which_section);
+    $hall_id=$section->Hall->id;
+    $section_name=$section->name;
+    
+    $which_sanse=$order_user->sanses_id;
+    // dd($which_sanse);
+    $hall_sanse=$order_user->Sanse->Hall_sanse
+    ->where('hall_id',$hall_id)->where('sanse_id',$which_sanse)
+    ->where('event_id',$which_event)->first();
+    // dd($hall_sanse);
+    $hall_sanse=$hall_sanse->id;
+    $refID=$result->RefID;
+    $price=$order_user->final_price;
+    $order_id=$order_user->id;
+    return view('ticketing.after_pay',compact(['refID','hall_sanse','section_name','price','order_id']));
     } else {
     echo 'Transaction failed. Status:'.$result->Status;
     }
@@ -121,4 +139,15 @@ class TicketingController extends Controller
     }
 
 
+    // public function paid(){
+    //     return view('ticketing.after_pay');
+    // }
+
+
+
+    public function print_ticket($order_id){
+        $my_tickets=Ticket::where('orders_id',$order_id)->get();
+        // dd($my_tickets);
+        return view('ticketing.final_ticket',compact(['my_tickets']));
+    }
 }

@@ -9,36 +9,24 @@
         <div class="row my-5 text-center">
 
             <div class="col-11 border shadow pt-4">
+               @foreach ($my_tickets as $ticket)
+                   <div class="col-12  pt-4 ">
+                   <p align="right">نام رویداد:{{$ticket->order->event->title}}</p>
+                   <p align="right">سانس: {{$ticket->order->sanse->name}} ، ساعت:{{$ticket->order->sanse->sanse_start}}</p>
+                   <p align="right">تاریخ: {{$ticket->order->sanse->sansdate}}</p>
+                   <p align="right">مکان:{{$ticket->seat->venue->venue_name}}</p>
+                    <p align="right">جایگاه:{{$ticket->order->seatsection->name}} </p>
 
-                <div class="col-12  pt-4 ">
-                    <p align="right">نام رویداد</p>
-                    <p align="right">سه شنبه - ساعت 17</p>
-                    <p align="right">سینما آزادی - سالن 1</p>
-                    <p align="right">جایگاه 2</p>
+                   <p align="right">ردیف: {{$ticket->seat->seat_row}} صندلی:{{$ticket->seat->seat_col}}</p>
 
-                    <p align="right">ردیف
-                        3 - صندلی 1</p>
+                   <hr>
 
-                    <p align="right">شماره پیگیری : </p>
-
-                </div>
+                </div> 
+               @endforeach
+               
                 <div><b>
                         <hr></b></div>
-                {{-- <div class="col-12  pt-4 ">
-                    <p align="right">نام
-                        رویداد</p>
-                    <p align="right">
-                        سه شنبه - ساعت 17</p>
-                    <p align="right">سینما آزادی - سالن 1</p>
-                    <p align="right">جایگاه 2</p>
-
-                    <p align="right">ردیف
-                        3 - صندلی 2</p>
-
-
-                    <p align="right"> شماره پیگیری : 13895</p>
-
-                </div> --}}
+            
 
             </div>
 

@@ -5,40 +5,22 @@
         <div class="col-lg-3 col-md-6">
           <div class="card to-do">
             <h2 class="display h4">لیست کار‌ها</h2>
-            <p>لورم ایپسوم نترن ریتسدر رمبدرذ</p>
-            <ul class="check-lists list-unstyled text-right">
-              <li class="d-flex align-items-center"> 
+            <p>تسک‌هایی که انجام شده است را انتخاب نمایید.</p>
+            <ul class="check-lists list-unstyled text-right " >
+             
+              @foreach ($tasks as $task)
+            
+                     <li class="d-flex align-items-center"> 
                 <input type="checkbox" id="list-1" name="list-1" class="form-control-custom " >
-                <label for="list-1" class="pl-2">فااادیفاذیفایاذ</label>
+                 <label for="list-1" class="pl-2">{{$task->task}}</label>
               </li>
-              <li class="d-flex align-items-center"> 
-                <input type="checkbox" id="list-2" name="list-2" class="form-control-custom">
-                <label for="list-2" class="pl-2">الئغابئد بلدیذ بیذقیذ</label>
-              </li>
-              <li class="d-flex align-items-center"> 
-                <input type="checkbox" id="list-3" name="list-3" class="form-control-custom">
-                <label for="list-3">بلذدی دئفدیبذید دیقثاذسث </label>
-              </li>
-              <li class="d-flex align-items-center"> 
-                <input type="checkbox" id="list-4" name="list-4" class="form-control-custom">
-                <label for="list-4">تردرت رنهثب رتخبت </label>
-              </li>
-              <li class="d-flex align-items-center"> 
-                <input type="checkbox" id="list-5" name="list-5" class="form-control-custom">
-                <label for="list-5">قلعلقذت رتثساسثیلرتذیر رتسیثر</label>
-              </li>
-              <li class="d-flex align-items-center"> 
-                <input type="checkbox" id="list-6" name="list-6" class="form-control-custom">
-                <label for="list-6">قثلنمدلنقسث تثقدلستثقذلقت </label>
-              </li>
-              <li class="d-flex align-items-center"> 
-                <input type="checkbox" id="list-7" name="list-7" class="form-control-custom">
-                <label for="list-7">قلقثمئنل ذنقلقسهدلر لبقلذدقی</label>
-              </li>
-              <li class="d-flex align-items-center"> 
-                <input type="checkbox" id="list-8" name="list-8" class="form-control-custom">
-                <label for="list-8">نبنببا دذتذتب هقتلتل</label>
-              </li>
+
+               
+              @endforeach
+            <a href="{{route('admin_new_task')}}"><i class="fa fa-plus-square" style="padding-left:4px;color:#33B35A" aria-hidden="true"></i>
+               <span style="color:#33B35A">تسک جدید</span> </a>
+              
+               
             </ul>
           </div>
         </div>

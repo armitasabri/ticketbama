@@ -43,7 +43,7 @@ class Event extends Model
 
    public function Order(){
 
-    return $this->hasMany('App\Models\Order' ,'id', 'event_id');
+    return $this->hasMany('App\Models\Order' ,'id', 'events_id');
 }
    public function Tag()
   {

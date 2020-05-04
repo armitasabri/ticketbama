@@ -11,7 +11,7 @@ class Hall_sanse extends Model
     }
 
     public function Sanse(){
-        return $this->belongsTo('App\Models\Sanse','sanse_id','id');
+        return $this->belongsTo('App\Models\Sanse');
     }
 
 

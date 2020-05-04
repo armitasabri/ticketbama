@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Cstatus;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -39,14 +40,14 @@ class CommentController extends Controller
         ->rawColumns(['action'])
         ->make(true);   
         
-       return view('admin.comments');
+       return view('admin.comments.comments');
     }
 
     public function index()
    {   
        $comments=Comment::all();  
        
-         return view('admin.comments')->with('comments',$comments);
+         return view('admin.comments.comments')->with('comments',$comments);
 
     }
 
@@ -93,7 +94,9 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+       $statuses=Cstatus::all();
+    //    dd($statuses);
+       return view('admin.comments.edit_commet',compact(['comment','statuses']));
     }
 
     /**
@@ -103,9 +106,15 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request)
     {
-        //
+       $comment=$request->get('comment');
+       $comment=Comment::find($comment);
+       $s=$request->get('stat');
+       $ss=Cstatus::where('name',$s)->first();
+       $comment->cstatuses_id=$ss->id;
+       $comment->save();
+       return redirect('admin/comments');
     }
 
     /**
@@ -116,6 +125,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        return redirect('/admin/comments');
     }
 }

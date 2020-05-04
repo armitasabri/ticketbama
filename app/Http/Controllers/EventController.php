@@ -26,12 +26,17 @@ class EventController extends Controller
        ->where('genres_id',$event->genres_id)->where('title','not like','%'. $event->title. '%')
       ->take(3)->get();
     $points=Event_rating::where('events_id',$id)->get();
-    
+    // dd($points->isEmpty());
     $sum=0;
-    foreach($points as $point){
+    if($points->isEmpty() == false){
+        foreach($points as $point){
         $sum=$sum+$point->point;
     }
     $averagepoint=$sum/count($points);
+} else{
+    $averagepoint=null;
+}
+    
 
         $hall_sanses=Hall_sanse::where('event_id',$event->id)->get();
       

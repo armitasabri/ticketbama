@@ -22,4 +22,7 @@ class Venue extends Model
     public function Event(){
         return $this->belongsToMany('App\Models\Event','event_venue');
     }
+    public function Seat(){
+        return $this->belongsTo('App\Models\Seat');
+    }
 }

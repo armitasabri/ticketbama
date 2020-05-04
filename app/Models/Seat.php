@@ -24,13 +24,16 @@ class Seat extends Model
 
     public function Ticket(){
 
-        return $this->hasMany('App\Models\Status' ,'id', 'seat_id');
+        return $this->hasMany('App\Models\Status' ,'id', 'seats_id');
     }
 
     public function Seat_hall_sanse(){
         return $this->hasMany('App\Models\Seat_hall_sanse');
     
     }
-
+    public function Venue(){
+        return $this->belongsTo('App\Models\Venue');
+    
+    }
     
 }

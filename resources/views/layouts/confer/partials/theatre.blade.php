@@ -23,7 +23,7 @@
         @foreach ($theatres as $theatre)
           <div class="col-3 pt-3 pb-4 hvr-push"  >
           <a href="{{'single_event/'.$theatre->id}}">
-                  <img src="storage/{{$theatre->fileimage}}" style="width:100%;height:100%" alt="">
+                  <img src="assets/img/feature-movies/{{$theatre->fileimage}}" style="width:100%;height:100%" alt="">
           <h5 class="pt-2" style="text-align:center;">{{$theatre->title}}</h5>
               </a>
           

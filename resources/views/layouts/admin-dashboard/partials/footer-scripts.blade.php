@@ -12,8 +12,30 @@
     <script src="{{asset('assets2/js/home-premium.js')}}"> </script>
     <!-- Main File-->
     <script src="{{asset('assets2/js/front.js')}}"></script>
-   
 
-   
+<script src="{{asset('assets2/vendor/jquery.cookie/jquery.cookie.js')}}"> </script>
+    <script src="{{asset('assets2/vendor/chart.js/Chart.min.js')}}"></script>
+    <script src="{{asset('assets2/vendor/jquery-validation/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('assets2/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+      <!-- Full Calendar-->
+<script src="{{asset('assets2/vendor/moment/min/moment.min.js')}}">   </script>
+      <script src="{{asset('assets2/vendor/fullcalendar/fullcalendar.min.js')}}">   </script>
+      <script src="{{asset('assets2/vendor/fullcalendar/gcal.min.js')}}">   </script>
+<script src="{{asset('asset2/vendor/fullcalendar/locale/local-all.js')}}"> </script>
+      <script src="{{asset('assets2/js/components-calendar.js')}}"></script>
+      <!-- Main File-->
+      <script src="{{asset('assets2/js/front.js')}}"></script>
+
+<script>
+
+  $(function() {
+
+    $('#calendar').fullCalendar({
+      locale: 'fa'
+    });
+
+  });
+
+</script>
 {{-- for dataTable --}}
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Seat;
 use App\Models\Venue;
 use App\Models\hall;
+use App\Models\Hall_sanse;
+use App\Models\Seat_hall_sanse;
 use App\Models\Seatsection;
 
 class SeatController extends Controller
@@ -35,12 +37,13 @@ class SeatController extends Controller
     public function insertseat(Request $request){
 
         $rows=$request->get('horizontal');
+        
         $cols=$request->get('vertical');
+        // dd($cols);
        $venue=$request->get('venue');
        $hall=$request->get('hall');
        $seatsection=$request->get('seatsection');
-      
-        // dd($seatsection);
+    
         for ($i=1;$i<=$rows;$i++){
             for($j=1;$j<=$cols;$j++){
             $seat= new Seat();
@@ -51,15 +54,41 @@ class SeatController extends Controller
                $seat->seatsection_id=$seatsection;
                $seat->save();
             }
+           
         }
 
         $all=Seat::where('seatsection_id',$seatsection)->where('hall_id',$hall)
         ->where('venue_id',$venue)->get();
         $rows=$all->groupBy('seat_row')->count();
-        $columns=($all->count()/$rows);
-        // return view('admin_seats.ui')->with('cols',$cols)->with('rows',$rows);
+        $columns=($all->count()/$rows); 
+ 
+
+
+        //save in Seat_hall_sanse table as well
+        $halls=Hall_sanse::where('hall_id',$hall)->get();
+        // dd($halls);
+        foreach($halls as $hall){
+            foreach($all as $single){
+
+            $s=new Seat_hall_sanse();
+            $s->seat_id=$single->id;
+            $s->hall_sanse_id=$hall->id;
+            $s->seatsection_id=$seatsection;
+            $s->status_id=3;
+            $s->save();    
+            // $s=new Seat_hall_sanse();
+            // $s->seat_id=$single->id;
+            // $s->hall_sanse_id=2;
+            // $s->status_id=3;
+            // $s->save();
+        }
+        }
+
+        
+      
+      
         return view('admin_seats.ui2')->with('all',$all)->with('columns',$columns);
-        // return view('seats.myseatplan4');
+        
        }
 
 
@@ -71,7 +100,7 @@ class SeatController extends Controller
         //   dd($forwarded);
 
         if($forwarded){
-            if(is_array($deleted)){
+            if(is_array($forwarded)){
            foreach($forwarded as $forward){
               $seat=Seat::where('id',$forward)->first();
 
@@ -107,7 +136,9 @@ class SeatController extends Controller
             $seat->save();
           }
           } 
-        
+    //       $a="successfull!";
+    //    return response()->json($a);
+       
     }
 
 

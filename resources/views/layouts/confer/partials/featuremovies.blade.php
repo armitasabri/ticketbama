@@ -16,7 +16,7 @@
             <div class="col-3 pt-4 hvr-pop pb-4" style="max-height:25%" >
                 {{-- @foreach ($event->Photo as $photo) --}}
                     {{-- <img src="assets/img/feature-movies/{{$photo->path}}" style="width:100%;height:100%" alt=""> --}}
-            <a href="{{'single_event/'.$event->id}}"> <img src="storage/{{$event->fileimage}}" style="width:100%;height:100%" alt=""> 
+            <a href="{{'single_event/'.$event->id}}"> <img src="assets/img/feature-movies/{{$event->fileimage}}" style="width:100%;height:100%" alt=""> 
                     <h5 class="pt-2" style="text-align:center;">{{ $event->title }}</h5>
                 </a> 
 

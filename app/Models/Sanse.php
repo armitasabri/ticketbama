@@ -11,7 +11,7 @@ class Sanse extends Model
 
     public function Order(){
 
-        return $this->hasMany('App\Models\Order' ,'id', 'sanse_id');
+        return $this->hasMany('App\Models\Order' ,'id', 'sanses_id');
     }
 
     public function Seat(){
@@ -24,7 +24,7 @@ class Sanse extends Model
     }
 
     public function Hall_sanse(){
-        return $this->hasMany('App\Models\Hall_sanse','id','sanse_id');
+        return $this->hasMany('App\Models\Hall_sanse');
     }
 
 }

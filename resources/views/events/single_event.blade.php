@@ -20,7 +20,7 @@
                         <div class="speaker-single-thumb">
                             {{-- <img src="{{asset('assets/img/feature-movies/Macerated Nimrod _ poster by The 3X4.jpg')}}" alt="" style="height: 280px;width:100%;"> --}}
                              {{-- @foreach($event->image()->take('1')->get() as $ephoto) --}}
-                            <img src="../storage/{{$event->fileimage}}" alt="" style="height: 280px;width:100%;">
+                            <img src="../assets/img/feature-movies/{{$event->fileimage}}" alt="" style="height: 280px;width:100%;">
                              {{-- @endforeach --}}
                         </div>
 
@@ -165,7 +165,7 @@
                             -&nbsp;سالن &nbsp;{{$hall->name}}</p>
                         <div class="d-flex justify-content-end">
                             <div>
-                                <a href="{{route('seat_section',['id'=>$hall_sanse->id])}}" class="px-3" style="color: white;">
+                                <a href="{{route('seat_section_view',['id'=>$hall_sanse->id])}}" class="px-3" style="color: white;">
                                     <button class="px-3 py-1 ml-4"
                                         style="border-radius: 23px;background-color: rgb(57,132,60);color: white;border: none;">
                                         نمایش سالن
@@ -207,7 +207,7 @@
                     @foreach ($similars as $similar)
                        <div class="item">
 
-                       <a href="{{route('single_event',['id'=>$similar->id])}}"><img src="../storage/{{$similar->fileimage}}" alt="" style="height: 190px;"></a>
+                       <a href="{{route('single_event',['id'=>$similar->id])}}"><img src="../assets/img/feature-movies/{{$similar->fileimage}}" alt="" style="height: 190px;"></a>
                                 <div class="text-center py-3">
 
                                     <p style="color: black;">{{$similar->title}}</p>

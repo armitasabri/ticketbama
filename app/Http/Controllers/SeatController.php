@@ -8,6 +8,15 @@ use App\Models\Myseat;
 use App\Models\Hall_sanse;
 use App\Models\Seat_hall_sanse;
 use App\Models\Seatsection;
+use App\Models\Price;
+use App\Models\Order;
+use App\Models\Ticket;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Bus\Dispatcher;
+use App\Jobs\CheckSeatsJob;
+use DispatchesJobs;
+
 
 use Javascript;
 
@@ -20,15 +29,31 @@ class SeatController extends Controller
 
     }
 
-    public function seats($id,$section){
+    public function seat_section_view($id){
+      $h=Hall_sanse::find($id);
+         return view('seats.seat_section_view',compact(['h']));
+ 
+     }
+
+    public function seats($id,$section,$price,$order_id){
+
+    $order=Order::find($order_id);
+    $oid=intval($order->id);
+    // dd($oid);
       $hs=Hall_sanse::find($id);
       $hid=$hs->hall_id;
-     $seatsection=Seatsection::where('name',$section)->first();
-
+      // dd($hid);
+     $seatsection=$hs->Hall->Seatsection->where('name',$section)->first();
       $section_id=$seatsection->id;
-      $myallseats=Seat_hall_sanse::where('hall_sanse_id',$hs->id)->get();
-    //  dd($myallseats->Seat);
-      $allseats=Seat::with('Seat_hall_sanse')->where('hall_id',$hid)
+      // dd($section_id);
+      $p_id=$seatsection->prices_id;
+      $p=Price::where('id',$p_id)->first();
+      $p=$p->price;
+      $tedad_bilit=intval($price/$p);
+      // dd($tedad_bilit);
+      $myallseats=Seat_hall_sanse::where('hall_sanse_id',$hs->id)->where('seatsection_id',$section_id)->get();
+    //  dd($myallseats);
+      $allseats=Seat::where('hall_id',$hid)
       ->where('seatsection_id',$section_id)->get();
     //  dd($allseats);
       $result=$allseats->isEmpty();
@@ -38,18 +63,52 @@ class SeatController extends Controller
         $columns=($allseats->count()/$rows);
         // dd($columns);
         $data=json_encode($columns);
-        return view('seats.seats',compact(['hs','allseats','columns']));
+        return view('seats.seats',compact(['hs','myallseats','columns','tedad_bilit','oid']));
        }
         else{
           $message="صندلی برای این بخش وجود ندارد";
           $columns=0;
-        return view('seats.seats',compact(['hs','allseats','message','columns']));
+        return view('seats.seats',compact(['hs','myallseats','message','columns','oid','tedad_bilit']));
 
         }
         
 
     }
 
+
+    public function seats_view($id,$section){
+
+        $hs=Hall_sanse::find($id);
+        
+        $hid=$hs->hall_id;
+        
+      //  $seatsection=Seatsection::where('name',$section)->first();
+      $seatsection=$hs->hall->seatsection->where('name',$section)->first();
+      //  dd($seatsection);
+        $section_id=$seatsection->id;
+        $myallseats=Seat_hall_sanse::where('hall_sanse_id',$hs->id)->where('seatsection_id',$section_id)->get();
+      //  dd($myallseats);
+        $allseats=Seat::with('Seat_hall_sanse')->where('hall_id',$hid)
+        ->where('seatsection_id',$section_id)->get();
+      //  dd($allseats);
+        $result=$allseats->isEmpty();
+        if($result===false){
+          $rows=$allseats->groupBy('seat_row')->count();
+          // dd($rows);
+          $columns=($allseats->count()/$rows);
+          // dd($columns);
+          $data=json_encode($columns);
+          return view('seats.seats_view',compact(['hs','myallseats','columns','section']));
+         }
+          else{
+            $message="صندلی برای این بخش وجود ندارد";
+            $columns=0;
+          return view('seats.seats_view',compact(['hs','myallseats','message','columns','section']));
+  
+          }
+          
+  
+      }
     
 
 
@@ -61,120 +120,31 @@ class SeatController extends Controller
 
     
 
-    public function seat_sold(){
+    
+
+
+
+    // public function finalview(){
+    //     // $cols=$request->get('vertical');
+    //     // $rows=$request->get('horizontal');
         
-    }
-
-
-    // public function index(){
-    //     return view('admin_seats.specification');
+    //     // $allseats=Myseat::groupBy('seat_row')->selectRaw('count(*) as total, seat_row')
+    //     // ->get();
+    //     $allseats=Myseat::all();
+    //     $rows=$allseats->groupBy('seat_row')->count();
+    //     $columns=($allseats->count()/$rows);
+    //     // dd($columns);
+    //     $data=json_encode($columns);
+        
+    //     // return response()->json($rows);
+    //     // return Json($rows);
+    //     // return response()->json(['msg'=>'Updated Successfully', 'success'=>true, 'data'=>$rows]);
+    //     return view('seats.myseatplan4')->with('allseats',$allseats)->with('columns',$columns);
     // }
-
-    // public function adminseat(Request $request){
-    //     $rows=$request->get('horizontal');
-    //     $cols=$request->get('vertical');
-    //     // dd($rows);
-    //     for ($i=1;$i<=$rows;$i++){
-    //         for($j=1;$j<=$cols;$j++){
-    //         $seat= new Myseat();
-    //         $seat->seat_row=$i;
-    //            $seat->seat_column=$j;
-    //            $seat->save();
-    //         }
-    //     }
-
-    //     $all=Myseat::all();
-    //     $rows=$all->groupBy('seat_row')->count();
-    //     $columns=($all->count()/$rows);
-    //     // return view('admin_seats.ui')->with('cols',$cols)->with('rows',$rows);
-    //     return view('admin_seats.ui2')->with('all',$all)->with('columns',$columns);
-
-    //     // return view('seats.myseatplan4');
-
-    // }
-
-    // public function created_plan(Request $request){
-    //     $seats=Myseat::all();
-    //     $deleted=$request->deletes;
-    //     $forwarded=$request->forwards;
-    //     //   dd($deleted);
-    //     //   dd($forwarded);
-
-    //     if($forwarded){
-    //         if(is_array($deleted)){
-    //        foreach($forwarded as $forward){
-    //         //    dd($forward);
-    //         //   $num=round($forward/10);
-    //         //   $num2=fmod($forward,10);
-    //         // //   dd($num2);
-    //         //   $seat=Myseat::where('seat_row',$num)->where('seat_column',$num2)->first();
-    //           $seat=Myseat::where('id',$forward)->first();
-
-    //         //   dd($seat);
-    //           $seat['forward']='yes';
-    //           $seat->save();
-    //      } } else{
-    //         $seat=Myseat::where('id',$forward)->first();
-    //           $seat['forward']='yes';
-    //           $seat->save();
-    //       }
-
-
-    //     }
-          
- 
-    //       if($deleted){
-              
-    //     if(is_array($deleted)){
-    //         foreach($deleted as $delete){
-    //             // dd($delete);
-    //         // $num=round($delete/10);
-    //         // $num2=fmod($delete,10);
-    //         // // dd($num);
-    //         // $seat=Myseat::where('seat_row',$num)->where('seat_column',$num2)->first();
-    //         // dd($seat);
-    //         $seat=Myseat::where('id',$delete)->first();
-    //     //  dd($seat);
-    //         $seat->empty='yes';
-    //         $seat->save();
-    //     } 
-    //     }
-    //     else{
-    //         // $num=round($delete/10);
-    //         // $num2=fmod($delete,10);
-    //         // dd($num);
-    //         // $seat=Myseat::where('seat_row',$num)->where('seat_column',$num2)->first();
-    //         // dd($seat);
-    //         $seat=Myseat::find($deleted)->get();
-
-    //         $seat->empty='yes';
-    //         $seat->save();
-    //       }
-    //       } 
-        
-    // }
-
-    public function finalview(){
-        // $cols=$request->get('vertical');
-        // $rows=$request->get('horizontal');
-        
-        // $allseats=Myseat::groupBy('seat_row')->selectRaw('count(*) as total, seat_row')
-        // ->get();
-        $allseats=Myseat::all();
-        $rows=$allseats->groupBy('seat_row')->count();
-        $columns=($allseats->count()/$rows);
-        // dd($columns);
-        $data=json_encode($columns);
-        
-        // return response()->json($rows);
-        // return Json($rows);
-        // return response()->json(['msg'=>'Updated Successfully', 'success'=>true, 'data'=>$rows]);
-        return view('seats.myseatplan4')->with('allseats',$allseats)->with('columns',$columns);
-    }
 
     public function seat_reserved(Request $request) {
       $ids=$request->ids;
-      // dd($ids);
+ 
     $selected=Seat::find($ids);
       //  dd($selected);
     foreach($selected as $select){
@@ -182,14 +152,55 @@ class SeatController extends Controller
       $a=$select->Seat_hall_sanse->first();
       $a->status_id=1;
       $a->save(); 
-        // $totalprice=$select->seatsection->price;
-        // dd($totalprice['price']);
-         echo json_encode($a);
+
+     
     }
-    
-    // $selected->status_d=1;
-    // $selected->save();
-  
-    // dd($select);
+    $m="successfull!";
+        echo json_encode($m);
 }
+
+
+
+
+
+
+public function seat_sold(Request $request){
+  $ids=$request->ids;
+  $user=Auth::user()->id;
+  // dd($user);
+  $order=Order::where('user_id',$user)->orderBy('id','DESC')->first();
+  // dd($order);
+  
+$selected=Seat::find($ids);
+  //  dd($selected);
+foreach($selected as $select){
+  $ticket= new Ticket();
+  $ticket->orders_id=$order->id;
+  $ticket->seats_id=$select->id;
+  $a=$select->Seat_hall_sanse->first();
+  $a->status_id=2;
+  $a->save(); 
+  $ticket->save();
+
+ 
+}
+$m="successfull!";
+    echo json_encode($m);
+}
+
+
+
+public function seat_Job(){
+  
+  $job=(new CheckSeatsJob())->delay(Carbon::now()->addSeconds(2));
+  dispatch($job);
+  return "job is done!";
+}
+
+
+
+
+
+
+
 }

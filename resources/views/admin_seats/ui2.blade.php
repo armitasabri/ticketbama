@@ -97,7 +97,7 @@ $.ajax({
     
   },
   success: function(response, status) {
-     alert("پنل انتخابی شما با موفقیت ذخیره شد");
+     alert("پلن انتخابی شما با موفقیت ذخیره شد");
   },
   // error: function(XMLHttpRequest, textStatus, erroeThrown) {
   //   console.log('AJAX error:' + textStatus)

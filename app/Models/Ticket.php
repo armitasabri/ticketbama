@@ -10,9 +10,9 @@ class Ticket extends Model
     // public $table = "Ticket";
 
     public function Seat(){
-        return $this->belongsTo('App\Models\Seat','seat_id','id');
+        return $this->belongsTo('App\Models\Seat','seats_id','id');
     }
     public function Order(){
-        return $this->belongsTo('App\Models\Order','order_id','id');
+        return $this->belongsTo('App\Models\Order','orders_id','id');
     }
 }
