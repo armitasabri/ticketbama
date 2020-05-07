@@ -7,6 +7,8 @@ use App\Models\Event;
 use App\Models\Genre;
 use App\Models\Event_rating;
 use App\Models\Comment;
+use App\Models\Slider_image;
+
 
 class HomeController extends Controller
 {
@@ -35,9 +37,10 @@ class HomeController extends Controller
 
          $populars=Event_rating::where('stars','>=',4)->distinct('events_id')->get(['events_id']);
         $comments=Comment::where('cstatuses_id',1)->get();
-        
+        $items=Slider_image::all();
         return view('myhome')->with('events',$events)->with('populars',$populars)
-        ->with('theatres',$theatres)->with('concerts',$concerts)->with('comments',$comments);
+        ->with('theatres',$theatres)->with('concerts',$concerts)
+        ->with('comments',$comments)->with('items',$items);
         // 
         // ->with('mgenres',$mgenres)->with('tgenres',$tgenres)
         // ->with('cgenres',$cgenres);

@@ -9,6 +9,8 @@ use App\Models\Hall;
 use App\Models\Hall_sanse;
 use App\Models\Sanse;
 use App\Models\Event;
+use App\Models\Photo;
+use App\Models\Slider_image;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -31,6 +33,8 @@ class EventController extends Controller
         return view('admin.events.events',compact(['events']));
     }
 
+
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -100,11 +104,11 @@ class EventController extends Controller
         
         endif;
 
-        $hall_sanse=new Hall_sanse();
-        $hall_sanse->hall_id=$hall->id;
-        $hall_sanse->sanse_id=$sanse->id;
-        $hall_sanse->event_id=$event->id;
-        $hall_sanse->save();
+        // $hall_sanse=new Hall_sanse();
+        // $hall_sanse->hall_id=$hall->id;
+        // $hall_sanse->sanse_id=$sanse->id;
+        // $hall_sanse->event_id=$event->id;
+        // $hall_sanse->save();
         return redirect('admin/events');
     }
 
@@ -146,6 +150,7 @@ class EventController extends Controller
      */
     public function update(Request $request)
     {
+        
        $event=$request->get('myevent');
        $event=Event::find($event);
        $event->title=$request->get('title');
@@ -187,4 +192,129 @@ class EventController extends Controller
        $event=Event::find($event)->delete();
        return redirect('admin/events');
     }
+
+
+    public function choose_main_pic($id){
+        // dd('ibjrbkr');
+        $event=Event::find($id);
+        // dd($event);
+        return view('admin.events.edit_main_pic',compact(['event']));
+    }
+
+
+    public function main_pic(Request $request){
+        $id=$request->get('id');
+        $event=Event::find($id);
+          $file=$request->file('file');
+          $imagename= $file->getClientOriginalName();
+          $file->move('assets/img/feature-movies',$imagename);
+          $event->fileimage=$imagename; 
+          $event->save(); 
+          return redirect('admin/events');
+    }
+
+
+    public function select_sub($id){
+       
+        $event=Event::find($id);
+        $pics=Photo::where('imageable_id',$event->id)->get();
+        // dd($pics);
+        return view('admin.events.select_sub_pics',compact(['event','pics']));
+    }
+
+    public function take_pic(Request $request){
+        $id=$request->get('id');
+        // dd($id);
+        $sub_pic=$request->get('image');
+        // dd($sub_pic);
+        $event=Event::find($id);
+        $pics=Photo::where('imageable_id',$event->id)->get();
+
+        return view('admin.events.edit_sub_pic',compact(['event','sub_pic']));
+
+    }
+
+    public function change_sub_pic(Request $request){
+        // dd('yohoooo');
+        $id=$request->get('id');
+        $subpic=$request->get('pic');
+        // dd($subpic);
+        $new_pic=$request->file('file');
+        $imagename= $new_pic->getClientOriginalName();
+        $unique_name = md5($imagename. time());
+        $new_pic->move('assets/img/feature-movies',$unique_name);
+        // dd($new_pic);
+        $event=Event::find($id);
+        $pics=Photo::where('imageable_id',$event->id)->where('path',$subpic)->first();
+        // dd($pics);
+        
+        // dd($unique_name);
+        $pics->path=$unique_name;
+        $pics->save();
+        return redirect('admin/events');
+
+    }
+
+    public function show_add_pic($id){
+        
+        $event=Event::find($id);
+        
+        return view('admin.events.add_sub_pic',compact(['event']));
+    }
+
+
+    public function add_pic(Request $request){
+        // dd('here');
+        $id=$request->get('id');
+        $event=Event::find($id);
+        $new_pic=$request->file('file');
+        $imagename= $new_pic->getClientOriginalName();
+        $new_pic->move('assets/img/feature-movies',$imagename);
+        $photo= new Photo();
+        $photo->imageable_id=$event->id;
+        $photo->imageable_type='App\Models\Event';
+        $photo->path=$imagename;
+        $photo->save();
+        return redirect('admin/events');
+
+    }
+
+    public function all_hallsanse(){
+        $h_ss=Hall_sanse::all();
+        return view('admin.events.hall&sanse',compact(['h_ss']));
+    }
+
+
+    public function go_to_hallsanse(){
+ 
+        $halls=Hall::all();
+        $sanses=Sanse::all();
+        $events=Event::all();
+        return view('admin.events.add_hall_sanse',compact(['sanses','halls','events']));
+    }
+
+    public function add_hall_sanse(Request $request){
+           $hall=$request->get('hall');
+        //    dd($hall);
+        $fhall=explode('-',$hall);
+        // dd($fhall[0]);
+        $halln=Hall::where('name',$fhall[0])->first();
+        // dd($halln);
+           $sanse=$request->get('sanse');
+           $sansen=Sanse::where('name',$sanse)->first();
+           $event=$request->get('event');
+           $eventn=Event::where('title',$event)->first();
+           $hall_sanse=new Hall_sanse();
+           $hall_sanse->hall_id=$halln->id;
+           $hall_sanse->sanse_id=$sansen->id;
+           $hall_sanse->event_id=$eventn->id;
+        $hall_sanse->save();
+        return redirect('admin/all_hall_sanses');
+    }
+
+    public function delete_hall_sanse($id){
+        // dd($id);
+        $hall_sanse=Hall_sanse::FIND($id)->delete();
+     return redirect('admin/all_hall_sanses');
+ }
 }

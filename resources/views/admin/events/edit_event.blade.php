@@ -70,6 +70,7 @@
                         <label>عکس‌های فرعی</label>
                         @foreach ($event->Photo as $item)
                       <img src="../../../assets/img/feature-movies/{{$item->path}}" alt="" class="form-control"  style="width:100px;height:100px">
+                      {{$item->path}}
                         @endforeach
                       </div>
                       <div class="form-group">
@@ -113,13 +114,30 @@
                   <div class="form-group">       
                     <input type="submit" value="ویرایش رویداد" class="btn btn-primary">
                   </div>
-                  <div class="form-group">       
-                    <a href="#"><button class="btn btn-primary">ویرایش عکس اصلی</button></a>
-                  </div> <div class="form-group">       
-                   <a href="#"><button class="btn btn-primary">ویرایش عکس‌های فرعی</button></a>
-                  </div>
-              </form>
-            </div>
+                 
+              </form> 
+               
+                       
+                  
+              
+            </div> 
+            <div>
+                   <a href="{{'event_main_pic/'.$event->id}}">
+                    <button class="btn btn-primary" >انتخاب عکس اصلی جدید</button>
+                  </a>
+                </div>
+                 <div class="pt-2">
+                    <a href="{{'select_sub_pic/'.$event->id}}">
+                     <button class="btn btn-primary" >ویرایش عکس‌های فرعی
+                       </button>
+                      </a>
+                 </div>
+                 <div class="pt-2">
+                  <a href="{{'adding_picss/'.$event->id}}">
+                   <button class="btn btn-primary" >اضافه کردن عکس فرعی جدید
+                     </button>
+                    </a>
+               </div>
           </div>
         </div>
     </div>

@@ -82,13 +82,20 @@
         <div class="container-fluid d-flex justify-content-center align-items-center pt-5">
             <div id="carousel-example" class="carousel slide " data-ride="carousel" style="min-height:500px;">
                 <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                
+                   
                     <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4 active">
-                        <img src="{{asset('assets/img/movie-posters/1.jpg')}}" class="img-fluid mx-auto d-block" alt="img1">
-                    </div>
-                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
                         <img src="{{asset('assets/img/movie-posters/2.jpg')}}" class="img-fluid mx-auto d-block" alt="img2">
                     </div>
-                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
+
+                    @foreach ($items as $item)
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4 ">
+                  <a href="{{'single_event/'.$item->event->id}}">
+                    <img src="assets/img/movie-posters/{{$item->fileimage}}" class="img-fluid mx-auto d-block" alt="img1">
+                  </a>  
+                     </div>
+                    @endforeach
+                    {{-- <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
                         <img src="{{asset('assets/img/movie-posters/3.jpg')}}" class="img-fluid mx-auto d-block" alt="img3">
                     </div>
                     <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
@@ -105,7 +112,7 @@
               </div>
               <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-4">
                 <img src="{{asset('assets/img/movie-posters/8.jpg')}}" class="img-fluid mx-auto d-block" alt="img4">
-            </div>
+            </div> --}}
                 </div>
                 <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

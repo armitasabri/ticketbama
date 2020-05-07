@@ -26,7 +26,7 @@ class Event extends Model
    }
 
    public function Blog(){
-    return $this->hasMany('App\Models\Blog','id','event_id');
+    return $this->hasMany('App\Models\Blog');
    }
 
    public function Comment(){
@@ -64,6 +64,10 @@ public function Venue(){
 
 public function Hall_sanse(){
     return $this->hasMany('App\Models\Hall_sanse');
+}
+
+public function Slider_image(){
+    return $this->hasMany('App\Models\Slider_image');
 }
 
 }

@@ -16,8 +16,11 @@
     <div class="row pl-2 pr-4 pb-5 pt-4" style="min-height:400px">
         @foreach ($theatres as $theatre)
             <div class="col-2 pt-3 hvr-pop" >
-            <img src="../storage/{{$theatre->fileimage}}" style="width:100%;height:100%" alt="">
+            <a href="{{'single_event/'.$theatre->id}}">
+                <img src="../assets/img/feature-movies/{{$theatre->fileimage}}" style="width:100%;height:100%" alt="">
             <h5 class="pt-2" style="text-align:center;">{{$theatre->title}}</h5>
+        </a>
+            
         </div>
         @endforeach
         

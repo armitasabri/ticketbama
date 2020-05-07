@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class MyUserController extends Controller
@@ -56,7 +57,8 @@ class MyUserController extends Controller
         $user->role_id=$roles->id;
         // dd($a);
         $user->email=$request->get('email');
-        $user->password=$request->get('password');
+        $password=$request->get('password');
+        $user->password=Hash::make($password);
         $user->mobile=$request->get('mobile');
         $file=$request->file('file');
         if($file):
@@ -115,7 +117,8 @@ class MyUserController extends Controller
         $user->name=$request->post('name');
         $user->email=$request->get('email');
         $user->mobile=$request->get('mobile');
-        $user->password=$request->get('password');
+        $password=$request->get('password');
+        $user->password=Hash::make($password);
         $role=$request->get('roles');
         $mrole=Role::where('name',$role)->first();
         $user->role_id=$mrole->id;
@@ -155,5 +158,44 @@ class MyUserController extends Controller
        User::find($myuser)->delete();
         return redirect('admin/myusers');
         
+    }
+
+
+     public function office_show(){
+         $roles=Role::where('name','box-office')->get();
+        //  dd($roles);
+         return view('admin.users.box_office',compact(['roles']));
+     }
+
+
+    public function box_office(Request $request){
+        // dd('heklojkl');
+        $user=new User();
+        $user->name=$request->get('name');
+       
+        $roles=Role::where('name','box-office')->first();
+        // dd($roles);
+        $user->role_id=$roles->id;
+        
+        $user->email=$request->get('email');
+        $password=$request->get('password');
+        $user->password=Hash::make($password);
+        $user->mobile=$request->get('mobile');
+        $file=$request->file('file');
+        if($file):
+            $imagename= $file->getClientOriginalName();
+            $file->move('assets/img/avatars',$imagename);
+            $user->fileimage=$imagename;  
+        endif;
+        $user->save();
+        $user->Photo()->create([
+            'imageable_id'=>Auth::user()->id,
+            'imageable_type'=>'App\Models\User', 
+            'path'=>$imagename
+        ]);
+        
+        
+       
+        return redirect('admin/myusers');
     }
 }

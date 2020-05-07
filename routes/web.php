@@ -145,6 +145,9 @@ Route::get('/final_view', 'SeatController@finalview')->name('final_view');
 
 
 
+
+
+
 // ======================= Admin Controllers ========================= //
 
 // Route::get('/admin_home', 'Admin\HomeController@index')->name('admin_home');
@@ -174,8 +177,37 @@ Route::namespace('Admin')->prefix('admin')->name('admin_')->group(function(){
     Route::get('/calendar','PublicController@calendar')->name('calendar');
     Route::get('/new_task','PublicController@new_task')->name('new_task');
     Route::post('/add_task','PublicController@add_task')->name('add_task');
+    Route::resource('/blogs', 'BlogController');
+    Route::get('/delete_my_blog/{blog}','BlogController@destroy');
+    Route::get('/edit_my_blog/{blog}','BlogController@edit');
+    Route::post('/edit_my_blog/update_my_blog','BlogController@update');
+    Route::get('/box_office','MyUserController@office_show')->name('box_office');
+    Route::post('/save_office','MyUserController@box_office')->name('save_box_office');
+    Route::get('/edit_my_event/event_main_pic/{id}','EventController@choose_main_pic')->name('event_main_pic');
+    Route::post('/edit_my_event/event_main_pic/save_main_pic','EventController@main_pic')->name('save_main_pic');
+    Route::get('/edit_my_event/select_sub_pic/{id}','EventController@select_sub')->name('select_sub_pic');
+    Route::post('/edit_my_event/select_sub_pic/take_pic','EventController@take_pic')->name('take_sub_pic');
+    Route::post('/edit_my_event/select_sub_pic/take_pic/change_sub_pic','EventController@change_sub_pic')->name('change_sub_pic');
+   Route::get('/edit_my_event/adding_picss/{id}','EventController@show_add_pic')->name('adding_sub_pic'); 
+    Route::post('/edit_my_event/adding_picss/add_sub_pic','EventController@add_pic')->name('add_sub_pic');
+    Route::resource('/slider', 'SliderController');
+    Route::post('/dropzone/file','SliderController@dropzone')->name('ndropzone');
+    Route::get('/destroy_slider/{slider}','SliderController@destroy')->name('slider_dume');
+    Route::get('/edit_slider/{id}','SliderController@edit')->name('slider_edit');
+    Route::post('/edit_slider/update_slider','SliderController@update');
 
 
+
+
+    Route::get('/all_hall_sanses','EventController@all_hallsanse')->name('all_hall_sanses');
+    Route::get('/go_to_hallsanse','EventController@go_to_hallsanse')->name('go_to_hallsanse');
+    Route::post('/add_to_hallsanse','EventController@add_hall_sanse')->name('add_to_hallsanse');
+    Route::get('/delete_hall_sanse/{id}','EventController@delete_hall_sanse')->name('delete_hallsanse');
+
+
+    
+   
+  
 
 
     

@@ -69,7 +69,9 @@
 
                       <div class="form-group">
                         <label>عکس‌های فرعی</label>
-                        <input type="file"  name="file[]" multiple class="form-control">
+                        <input type="file"  name="file[]" multiple class="form-control dropzone">
+                        
+                       
                       </div>
                       <div class="form-group">
                         <label>مدت زمان رویداد</label>
@@ -113,6 +115,7 @@
                     <input type="submit" value="ثبت رویداد" class="btn btn-primary">
                   </div>
               </form>
+              
             </div>
           </div>
         </div>

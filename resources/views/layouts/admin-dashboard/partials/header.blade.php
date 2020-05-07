@@ -26,9 +26,19 @@
             <ul id="formsDropdown" class="collapse list-unstyled ">
               <li><a href="{{route('admin_events.index')}}">مدیریت رویدادها</a></li>
             <li><a href="{{route('admin_events.create')}}">ثبت رویداد جدید</a></li>
-              <li><a href="forms.html">مدیریت اسلایدر</a></li>
+            <li><a href="{{route('admin_all_hall_sanses')}}">ثبت سانس و سالن برای رویداد</a></li>
+            {{-- <li><a href="{{route('admin_slider.create')}}">مدیریت اسلایدر</a></li> --}}
             </ul>
           </li>
+          <li><a href="#formsDropdownEE" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-file-image-o" aria-hidden="true"></i>  اسلایدر </a>
+            <ul id="formsDropdownEE" class="collapse list-unstyled ">
+            <li><a href="{{route('admin_slider.index')}}">مدیریت اسلایدر</a></li>
+            <li><a href="{{route('admin_slider.create')}}">عکس جدید</a></li>
+            {{-- <li><a href="{{route('admin_slider.create')}}">عکس جدید</a></li> --}}
+       
+            </ul>
+          </li>
+
           <li><a href="#tablesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> سفارشات </a>
             <ul id="tablesDropdown" class="collapse list-unstyled ">
             <li><a href="{{route('admin_orders.index')}}">مشاهده سفارشات</a></li>
@@ -43,8 +53,8 @@
           </li>
           <li><a href="#pagesDropdown1" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> وبلاگ </a>
             <ul id="pagesDropdown1" class="collapse list-unstyled ">
-              <li><a href="#">مشاهده بخش بلاگ</a></li>
-              <li><a href="#">ثبت مورد جدید</a></li>
+            <li><a href="{{route('admin_blogs.index')}}">مشاهده بخش بلاگ</a></li>
+            <li><a href="{{route('admin_blogs.create')}}">ثبت مورد جدید</a></li>
             
             </ul>
           </li>
@@ -68,7 +78,7 @@
           <li><a href="#pagesDropdown2" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i> گیشه‌ها </a>
             <ul id="pagesDropdown2" class="collapse list-unstyled ">
             
-            <li><a href="{{route('admin_input_seats')}}">گیشه جدید</a></li>
+            <li><a href="{{route('admin_box_office')}}">گیشه جدید</a></li>
             
             </ul>
           </li>

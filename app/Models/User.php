@@ -27,6 +27,11 @@ class User extends Model
         return $this->hasMany('App\Models\Order' ,'id', 'user_id');
     }
 
+    public function Blog(){
+
+        return $this->hasMany('App\Models\Blog' );
+    }
+
     public function Role(){
         return $this->belongsTo('App\Models\Role');
     }

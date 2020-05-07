@@ -7,7 +7,7 @@
 
 
 
-<div class="container pt-5 " style="direction:ltr;margin-right:170px;" >
+<div class="container pt-5 " style="direction:ltr;margin-right:180px;" >
   
  <table class=" table table-bordered"  id="laravel_datatable">
     <thead>
@@ -19,8 +19,8 @@
         <th>director</th>
         <th>duration</th>
         <th >description</th>
-        <th>sanse</th>
-        <th>hall</th>
+        {{-- <th>sanse</th> --}}
+        {{-- <th>hall</th> --}}
         <th>cast</th>
         <th>genre</th>
         <th>artist</th>
@@ -41,15 +41,15 @@
              <td>{{$event->event_date}}</td>
              <td>{{$event->Category['name']}}</td>
              <td>{{$event->director}}</td>
-             <td>{{$event->duration_minute}}</td>
-             <td>{{$event->description}}</td>
-             <td>{{$event->sanses_id}}</td>
-             <td>{{$event->halls_id}}</td>
+             <td >{{$event->duration_minute}}</td>
+             <td style="min-width:200px;">{{$event->description}}</td>
+             {{-- <td>{{$event->sanses_id}}</td> --}}
+             {{-- <td>{{$event->halls_id}}</td> --}}
              <td>{{$event->cast}}</td>
              <td>{{$event->Genre['name']}}</td>
              <td>{{$event->artist}}</td>
              <td>  
-                 @foreach($event->Photo->take(3) as $photo)
+                 @foreach($event->Photo->take(4) as $photo)
                 <div class="col-4 " style="height:190px">
                         <img src="../assets/img/feature-movies/{{$photo->path}}" alt="" class="border shadow" style="height:100px;width:100px">
                 </div>

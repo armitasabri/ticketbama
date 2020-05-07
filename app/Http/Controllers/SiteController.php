@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Contactus;
+use App\Models\Blog;
 
 
 
@@ -26,8 +27,8 @@ class SiteController extends Controller
 
     }
     public function blog(){
-
-        return view('site.blog');
+        $blogs=Blog::all();
+        return view('site.blog',compact(['blogs']));
 
     }
 

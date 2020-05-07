@@ -27,7 +27,7 @@
       </section>
       <script src="{{asset('assets2/vendor/fullcalendar/fullcalendar.min.js')}}">   </script>
     
-<script src="{{asset('asset2/vendor/fullcalendar/locale/fa.js')}}"> </script>
+<script src="{{asset('assets2/vendor/fullcalendar/locale/fa.js')}}"> </script>
       <script>
 
 

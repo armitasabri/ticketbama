@@ -21,10 +21,14 @@
 <script src="{{asset('assets2/vendor/moment/min/moment.min.js')}}">   </script>
       <script src="{{asset('assets2/vendor/fullcalendar/fullcalendar.min.js')}}">   </script>
       <script src="{{asset('assets2/vendor/fullcalendar/gcal.min.js')}}">   </script>
-<script src="{{asset('asset2/vendor/fullcalendar/locale/local-all.js')}}"> </script>
+<script src="{{asset('assets2/vendor/fullcalendar/locale/local-all.js')}}"> </script>
       <script src="{{asset('assets2/js/components-calendar.js')}}"></script>
+<script src="{{asset('assets2/vendor/dropzone/dropzone.js')}}"></script>
+    <!-- Dropzone Init-->
+    <script src="{{asset('assets2/js/forms-dropzone.js')}}">    </script>
       <!-- Main File-->
       <script src="{{asset('assets2/js/front.js')}}"></script>
+      
 
 <script>
 

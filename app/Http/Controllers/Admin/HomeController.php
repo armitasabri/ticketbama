@@ -32,7 +32,8 @@ class HomeController extends Controller
 
               $recent_events=Event::where('created_at','>=' ,$three_days_ago)->count();
             //   dd($recent_events);
-
+ 
+          
             
             $user=Auth::user()->id;
             $user=User::find($user);
