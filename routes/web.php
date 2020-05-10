@@ -191,12 +191,18 @@ Route::namespace('Admin')->prefix('admin')->name('admin_')->group(function(){
    Route::get('/edit_my_event/adding_picss/{id}','EventController@show_add_pic')->name('adding_sub_pic'); 
     Route::post('/edit_my_event/adding_picss/add_sub_pic','EventController@add_pic')->name('add_sub_pic');
     Route::resource('/slider', 'SliderController');
+    
     Route::post('/dropzone/file','SliderController@dropzone')->name('ndropzone');
     Route::get('/destroy_slider/{slider}','SliderController@destroy')->name('slider_dume');
     Route::get('/edit_slider/{id}','SliderController@edit')->name('slider_edit');
     Route::post('/edit_slider/update_slider','SliderController@update');
 
-
+    Route::resource('/sanses', 'SanseController');
+    Route::resource('/venues', 'VenueController');
+    Route::resource('/halls', 'HallController');
+    Route::get('/delete_venue/{id}','VenueController@destroy')->name('venue_destroy');
+    Route::get('/delete_sanse/{id}','SanseController@destroy')->name('sanse_destroy');
+    Route::get('/delete_hall/{id}','HallController@destroy')->name('hall_destroy');
 
 
     Route::get('/all_hall_sanses','EventController@all_hallsanse')->name('all_hall_sanses');
@@ -205,7 +211,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin_')->group(function(){
     Route::get('/delete_hall_sanse/{id}','EventController@delete_hall_sanse')->name('delete_hallsanse');
 
 
-    
+    // Route::get('chart-js', 'ChartController@index')->name('chart'); 
    
   
 

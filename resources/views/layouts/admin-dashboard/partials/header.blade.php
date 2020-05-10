@@ -3,7 +3,7 @@
       <!-- Sidebar Header    -->
       <div class="sidenav-header d-flex align-items-center justify-content-center">
         <!-- User Info-->
-        <div class="sidenav-header-inner text-center"><a href="pages-profile.html"><img src="../assets/img/avatars/{{Auth::user()->fileimage}}" alt="person" class="img-fluid rounded-circle"></a>
+      <div class="sidenav-header-inner text-center"><a href="pages-profile.html"><img src="{{asset("assets/img/avatars/".Auth::user()->fileimage)}}" alt="person" class="img-fluid rounded-circle"></a>
           <h2 class="h5">{{Auth::user()->name}}</h2><span>توسعه‌گر وب</span>
         </div>
         <!-- Small Brand information, appears on minimized sidebar-->
@@ -14,6 +14,7 @@
         <h5 class="sidenav-heading"> منو اصلی</h5>
         <ul id="side-main-menu" class="side-menu list-unstyled">                  
         <li><a href="{{route('admin_home')}}"> <i class="fa fa-home" aria-hidden="true"></i>  خانه</a></li>
+        <li><a href="{{route('home')}}"> <i class="fa fa-hand-o-right" aria-hidden="true"></i>  برگشت به تیکت با ما</a></li>
         <li><a href="{{route('admin_calendar')}}"> <i class="fa fa-calendar" aria-hidden="true"></i>  تقویم</a></li>
           
           <li><a href="#chartsDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> کاربران </a>
@@ -58,18 +59,10 @@
             
             </ul>
           </li>
-          {{-- <li><a href="#pagesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-calendar-check-o" aria-hidden="true"></i> وبلاگ </a>
-            <ul id="pagesDropdown" class="collapse list-unstyled ">
-            <li><a href="{{route('admin_comments.index')}}">مشاهده بخش بلاگ</a></li>
-            <li><a href="{{route('admin_events.index')}}">ثبت مورد جدید</a></li>
-            
-              
-            </ul>
-          </li> --}}
+          
           <li><a href="#pagesDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i> مدیریت صندلی‌ها </a>
             <ul id="pagesDropdown" class="collapse list-unstyled ">
-            {{-- <li><a href="{{route('admin_comments.index')}}">مدیریت نظرات</a></li>
-            <li><a href="{{route('admin_events.index')}}">مدیریت رویدادها</a></li> --}}
+        
             <li><a href="{{route('admin_input_seats')}}">چینش صندلی</a></li>
             
             </ul>
@@ -79,6 +72,30 @@
             <ul id="pagesDropdown2" class="collapse list-unstyled ">
             
             <li><a href="{{route('admin_box_office')}}">گیشه جدید</a></li>
+            
+            </ul>
+          </li>
+
+          <li><a href="#pagesDropdown3" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i> مکان رویداد </a>
+            <ul id="pagesDropdown3" class="collapse list-unstyled ">
+            <li><a href="{{route('admin_venues.index')}}">مدیریت مکان‌ها</a></li>
+            <li><a href="{{route('admin_venues.create')}}">مکان جدید</a></li>
+            
+            </ul>
+          </li>
+
+          <li><a href="#pagesDropdown4" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i> سانس‌ها </a>
+            <ul id="pagesDropdown4" class="collapse list-unstyled ">
+            <li><a href="{{route('admin_sanses.index')}}">مدیریت سانس‌ها</a></li>
+            <li><a href="{{route('admin_sanses.create')}}">سانس جدید</a></li>
+            
+            </ul>
+          </li>
+
+          <li><a href="#pagesDropdown5" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i> سالن‌ها </a>
+            <ul id="pagesDropdown5" class="collapse list-unstyled ">
+            <li><a href="{{route('admin_halls.index')}}">مدیریت سالن‌ها</a></li>
+            <li><a href="{{route('admin_halls.create')}}">سالن جدید</a></li>
             
             </ul>
           </li>
@@ -108,7 +125,7 @@
       <nav class="navbar">
         <div class="container-fluid">
           <div class="navbar-holder d-flex align-items-center justify-content-between">
-            <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="index.html" class="navbar-brand">
+          <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="{{route('admin_home')}}" class="navbar-brand">
                 <div class="brand-text d-none d-md-inline-block"><span>پنل </span><strong class="text-primary">مدیریت</strong></div></a></div>
             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
               <!-- Notifications dropdown-->

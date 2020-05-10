@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -54,6 +55,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'mobile'=>['required', 'numeric','digits:11'],
+            'file'=>['image']
         ]);
     }
 
@@ -65,11 +67,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = request();
+        $new_pic = $request->file('file');
+        // dd($profileImage);
+        $imagename= $new_pic->getClientOriginalName();
+        $unique_name = time().$imagename;
+        // dd($unique_name);
+        $new_pic->move('assets/img/avatars',$unique_name);
+     
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'mobile'=>$data['mobile']
+            'mobile'=>$data['mobile'],
+            'fileimage'=>$unique_name,
         ]);
     }
 }

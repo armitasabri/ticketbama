@@ -16,7 +16,7 @@
     <div class="row" style="min-height:600px">
         @foreach ($events as $item)
             <div class="col-2 pt-3 pr-4  hvr-pop" style="height:500px;padding-bottom:80px">
-            <img src="../storage/{{$item->fileimage}}" style="width:100%;height:100%" alt="">
+            <img src="../assets/img/feature-movies/{{$item->fileimage}}" style="width:100%;height:100%" alt="">
             <h5 class="pt-2" style="text-align:center;">{{$item->title}}</h5>
             <h6 class="pt-2" style="text-align:center;">کارگردان:{{$item['director']}}</h6>
         </div>

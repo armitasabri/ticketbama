@@ -9,7 +9,7 @@
                 <div class="card-header"><h4 class="text-light text-light">ثبت نام در تیکت با ما</h4> </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -78,13 +78,16 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('ثبت نام') }}
-                                </button>
-                            </div> --}}
-                            <div class="form-group float-left " >
+
+                        <div class="form-group row">
+                            <label for="profile picture" class="col-md-4 col-form-label text-md-right"><h6 class="text-light text-light">آواتار</h6></label>
+
+                            <div class="col-md-6">
+                                <input id="file" type="file" class="form-control" name="file" >
+                            </div>
+                        </div>
+                      
+                            <div class="form-group float-left pt-4" >
                                 {{-- <input type="submit" value="ثبت نام" class="btn confer-btn "><i class="zmdi zmdi-long-arrow-right"> --}}
                                     <button type="submit" class="btn confer-btn"><h6 class="pt-2">ثبت نام</h6> <i class="zmdi zmdi-long-arrow-right"></i></button>
                                 </div>

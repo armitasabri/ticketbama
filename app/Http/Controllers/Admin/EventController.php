@@ -10,6 +10,7 @@ use App\Models\Hall_sanse;
 use App\Models\Sanse;
 use App\Models\Event;
 use App\Models\Photo;
+use App\Models\Venue;
 use App\Models\Slider_image;
 use Illuminate\Http\Request;
 
@@ -57,6 +58,21 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+
+
+
+        request()->validate([
+            'title'=>['required','string','max:255'],
+            'director'=>['required','string','max:255','alpha'],
+            'cast'=>['string','max:255','alpha'],
+            'artist'=>['string','max:255','alpha'],
+            'description'=>['required'],
+            'date'=>['required'],
+            'duration'=>['required', 'numeric','digits:3'],
+            'singlefile'=>['required','image'],
+            'file'=>['required','image'],
+         ]);
+
         $event=new Event();
         $event->title=$request->get('title');
         
@@ -297,7 +313,10 @@ class EventController extends Controller
            $hall=$request->get('hall');
         //    dd($hall);
         $fhall=explode('-',$hall);
-        // dd($fhall[0]);
+        // dd($fhall[1]);
+        $venue=Venue::where('venue_name',$fhall[1])->first();
+        // dd($venue);
+        // $user->roles()->attach($roles);
         $halln=Hall::where('name',$fhall[0])->first();
         // dd($halln);
            $sanse=$request->get('sanse');
@@ -309,6 +328,7 @@ class EventController extends Controller
            $hall_sanse->sanse_id=$sansen->id;
            $hall_sanse->event_id=$eventn->id;
         $hall_sanse->save();
+        $eventn->Venue()->attach($venue);
         return redirect('admin/all_hall_sanses');
     }
 

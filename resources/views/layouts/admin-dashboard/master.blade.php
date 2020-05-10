@@ -10,8 +10,10 @@
     @yield('content')
     @yield('counts') 
     @yield('charts') 
+    {{-- @yield('newchart') --}}
+    {{-- @yield('anotherchart') --}}
     @yield('statistics') 
-    @yield('updates') 
+    {{-- @yield('updates')  --}}
 
 
 

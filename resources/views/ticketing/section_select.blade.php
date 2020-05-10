@@ -21,7 +21,7 @@ input[type=number]::-webkit-outer-spin-button {
                         <!-- event image -->
                         <div class="speaker-single-thumb">
 
-                            <img src="../storage/{{$hall_sanse->Event->fileimage}}" alt="" style="height: 280px;width:100%;">
+                            <img src="../assets/img/feature-movies/{{$hall_sanse->Event->fileimage}}" alt="" style="height: 280px;width:100%;">
                         </div>
 
 

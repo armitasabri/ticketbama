@@ -62,38 +62,54 @@ class SiteController extends Controller
 
     public function search_result(Request $request){
          
-        $cat=Genre::all();
+        // $cat=Genre::all();
         // dd($cat);
         $k=$request->get('keyword');
-        $cat=Category::where('name', 'LIKE','%' .$k. '%')->first();
-        if($cat != ""){
-               $category_id=$cat->id; 
-        }else{
-            $category_id=null;
-        }
+        // dd($k);
+        $keywords=explode(" ",$k);
+        // dd($keywords);
+    //     $cat=Category::where('name', 'LIKE','%' .$k. '%')->first();
+    //     if($cat != ""){
+    //            $category_id=$cat->id; 
+    //     }else{
+    //         $category_id=null;
+    //     }
     
-        $genre=Genre::where('name', 'LIKE','%' .$k. '%')->first();
-        if($genre != ""){
-            $genre_id=$genre->id;
-     }else{
-         $genre_id=null;
-     }
+    //     $genre=Genre::where('name', 'LIKE','%' .$k. '%')->first();
+    //     if($genre != ""){
+    //         $genre_id=$genre->id;
+    //  }else{
+    //      $genre_id=null;
+    //  }
         
-        if($k != " ") 
+        if($keywords != " ") 
         {
-            $events=Event::with('Category')->with('Genre')->where('title', 'LIKE','%' .$k. '%')
-            ->orWhere('director', 'LIKE','%' .$k. '%')->orWhere('cast', 'LIKE','%' .$k. '%')
-            ->orWhere('categories_id', $category_id)
-            ->orWhere('genres_id', $genre_id)->get();
-            // if(count($events) >0 )
-            // dd(is_null($events->id));
-            // dd($events); 
+            foreach($keywords as $keyword){
+                $events=Event::where('title', 'LIKE','%' .$keyword. '%')
+                            ->orWhere('director', 'LIKE','%' .$keyword. '%')
+                            ->orWhere('cast', 'LIKE','%' .$keyword. '%')
+                            ->orWhere('artist','LIKE','%'.$keyword.'%')
+
+                            ->orWhereHas('category',function($q)use ($keyword){
+                                return $q->where('name','LIKE','%'.$keyword.'%');
+                            })
+
+                            ->orWhereHas('venue',function($q)use ($keyword){
+                                return $q->where('venue_name','LIKE','%'.$keyword.'%');
+                            })
+
+                            ->orWhereHas('genre',function($q)use ($keyword){
+                                return $q->where('name','LIKE','%'.$keyword.'%');
+                            })->get();
+            }
+            
+            
             $m="متاسفانه رکوردی یافت نشد";
-            return view('site.searchresult')->with('events',$events)->with('k',$k)->with('Message',$m);
-        //   if($events === null){
-             
-        //     return view('site.searchresult');
-        //   }
+            $filmcat=Category::find('1');
+            $theatrecat=Category::find('2');
+            $concertcat=Category::find('3');
+            return view('site.searchresult',compact(['events','filmcat','theatrecat','concertcat','m','k']));
+       
         }
     }
 

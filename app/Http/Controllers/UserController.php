@@ -37,6 +37,11 @@ class UserController extends Controller
         $user->email=$request->get('email');
         $user->mobile=$request->get('mobile');
         $user->password=$request->get('password');
+        $pic=$request->file('file');
+        $imagename=$pic->getClientOriginalName();
+        $picname=time().$imagename;
+        $pic->move('assets/img/avatars/',$picname);
+        $user->fileimage=$picname;
         $user->save();
         return redirect('profile');
 

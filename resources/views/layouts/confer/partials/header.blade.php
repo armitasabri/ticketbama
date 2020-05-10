@@ -70,8 +70,16 @@
                         
                     <li>
                         <a>
+                            @guest
+                                <img src="{{asset('assets/img/avatars/unknownuser.png')}}" class="rounded-circle" alt="" style="width:40px;height:40px;">  
+                            @else
+                                  
+                        <img src="{{asset("assets/img/avatars/".Auth::user()->fileimage)}}" class="rounded-circle" alt="" style="width:40px;height:40px;">  
+
+                            @endguest
                             {{ Auth::user()->name }} 
-                        <img src="{{asset('assets/img/avatars/unknownuser.png')}}" class="rounded-circle" alt="" style="width:30px;height:30px;">  
+                            
+                        
 
                         </a>
                        <ul class="dropdown" style="width:180px;">
@@ -133,6 +141,12 @@
                         </div>
                     </li> --}}
                     @endguest
+                    <div class="d-flex flex-column">
+                        <div id="shamsi">
+                        <p style="color:whitesmoke">{{
+                            $date = \Morilog\Jalali\Jalalian::forge('today')->format('%A، %d %B %y')
+                            }}</p>
+                        </div>
                         <div class="md-form active-purple active-purple-2 mb-2">
                         <form action="{{route('search_result')}}" method="post">
                             {{ csrf_field() }}
@@ -146,6 +160,8 @@
                         </div>
                         
                     </div>
+                        
+                    </div>
 
                 </div>
                 <!-- Nav End -->
@@ -157,3 +173,17 @@
 
 </header>  
 </div>
+
+
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+
+<script>
+    $(window).scroll(function() {
+
+  if ($(this).scrollTop() > 0) {
+    $('#shamsi').fadeOut();
+  } else {
+    $('#shamsi').fadeIn();
+  }
+});
+</script>

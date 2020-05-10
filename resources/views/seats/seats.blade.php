@@ -12,7 +12,7 @@
                     <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
                         <!-- event image -->
                         <div class="speaker-single-thumb">
-                        <img src="../../../../storage/{{$hs->event->fileimage}}" alt="" style="height: 280px;width:100%;">
+                        <img src="{{asset("assets/img/feature-movies/".$hs->event->fileimage)}}" alt="" style="height: 280px;width:100%;">
                         </div>
 
 
@@ -21,7 +21,7 @@
                 <div style="margin-top: 60px; margin-right: 40px;">
 
                 <p class="mfilmname mt-2" dir="rtl" align="right">{{$hs->event->title}}</p>
-                <p align="right" class="secsalonname">{{$hs->sanse->name}}</p>
+                <p align="right" class="secsalonname">{{$hs->sanse->name}} - ساعت: {{$hs->sanse->sanse_start}}</p>
                 <p align="right" class="secsalonname">{{$hs->hall->venue->venue_name}}  - {{$hs->hall->name}}</p>
 
                 </div>
@@ -79,15 +79,14 @@
                     <p align="right" style="font-size: .9em;">رزرو شده</p>
 
                 </div>
-                <div class="text-center pt-5 pr-2 pl-2" style="min-height:700px;min-width:800px;">
-                    {{-- <img src="{{asset('assets/img/mimg/seats/seat2.png')}}" alt=""> --}}
+                <div class="text-center pt-5 pr-5 pl-2" style="min-height:700px;min-width:800px;">
+                
                   @if(isset($message))
                     {{$message}}
-                    @else
-
-
+                  @else
+                      
                     @foreach ($myallseats as  $seat) 
-
+                  
                      <span style="display:none">  {{$color="none"}}</span> 
                     
                     @if($seat->status_id === 2 )
@@ -98,28 +97,27 @@
                   
                     @endif
                    
-                   
+               
                     @if ($seat->seat->forward== "yes")
-                <div id="{{$seat->seat->id}}" class="col seats target forward p-0">
-                      {{-- <img  src="{{asset('assets/img/seats/seat.png')}}" alt="" style="height:50px;width:50px;background-color:{{$color}}"> --}}
+                <div id="{{$seat->id}}" class="col seats target forward p-0">
                     
-                        <span class="icon-chairr" style="font-size:300%;color:{{$color}}"></span>
+                        <span data-toggle="tooltip" title="ردیف: {{$seat->seat->seat_row}} صندلی: {{$seat->seat->seat_col}} وضعیت: {{$seat->status->name}}" class="icon-chairr" style="font-size:300%;color:{{$color}}"></span>
                     
                       
                       <span style="display:none;">
                         {{$seat->seat->id}}
                       </span>
                      
-                        {{-- <i style="display-inline" class="flaticon-chair" ></i>   --}}
+                       
                     
                       
                       </div> 
                      @elseif($seat->seat->empty== "yes" ) 
-                     <div  id="{{$seat->seat->id}}" class="col seats target empty p-0">
-                      {{-- <img style="display:none;" src="{{asset('assets/img/seats/seat.png')}}" alt="" style="height:50px;width:50px;background-color:{{$color}}"> --}}
-                    
+                        <div  id="{{$seat->id}}" class="col seats target empty p-0">
                       
-                          <span class="icon-chairr" style="font-size:300%;color:{{$color}};display:none"></span>
+                    
+                    
+                          <span data-toggle="tooltip" title="ردیف: {{$seat->seat->seat_row}} صندلی: {{$seat->seat->seat_col}} وضعیت: {{$seat->status->name}}" class="icon-chairr" style="font-size:300%;color:{{$color}};display:none"></span>
                        
                      
                       <span style="display:none">
@@ -128,11 +126,11 @@
                       </div>   
                      @else
                   
-                  <div id="{{$seat->seat->id}}" class="col seats target p-0">
-                   {{-- <img  src="{{asset('assets/img/seats/seat.png')}}" alt="" style="height:50px;width:50px;background-color:{{$color}}"> --}}
-                
+                       <div id="{{$seat->id}}" class="col seats target p-0">
                    
-                        <span class="icon-chairr" style="font-size:300%;color:{{$color}}"></span>
+                   
+                   
+                        <span data-toggle="tooltip" title="ردیف: {{$seat->seat->seat_row}} صندلی: {{$seat->seat->seat_col}} وضعیت: {{$seat->status->name}}" class="icon-chairr" style="font-size:300%;color:{{$color}}"></span>
                    
                
                   
@@ -201,9 +199,18 @@
 <script>
     
 
-var columns = {!! json_encode($columns) !!};
+$(document).ready(function(){
 
- var tedad ={!! json_encode($tedad_bilit) !!};
+
+
+$('[data-toggle="tooltip"]').tooltip();
+
+
+var columns = {!! json_encode($columns) !!};
+var rows = {!! json_encode($rows) !!};
+console.log(rows);
+
+var tedad ={!! json_encode($tedad_bilit) !!};
 
 console.log(columns);
 
@@ -212,8 +219,13 @@ console.log(columns);
 var divs = $(".target");
 
     for(var i = 0; i < divs.length; i+=columns) {
-      divs.slice(i, i+columns).wrapAll("<div class='row'></div>");
+       
+             divs.slice(i, i+columns).wrapAll("<div class='row'>ردیف</div>");
+  
     }
+    // for( var j=1 ; j<= rows;j++){
+    //    $('.row').slice(j, j+rows).append(j); 
+    // }
 
 
   // 4 saniye negah midare class reservo
@@ -227,7 +239,11 @@ var divs = $(".target");
  $('.target').click(function(e){
      
     
-     $(this).toggleClass( "reserved" ); 
+     
+if ($('.reserved').length < tedad) {
+
+
+ $(this).toggleClass( "reserved" ); 
     
 
 e.preventDefault();
@@ -240,9 +256,7 @@ e.preventDefault();
 
     var items = $('.reserved').map(function () { return this.id; }).get();
      
-console.log(items);
-if ($('.reserved').length <= tedad) {
-     
+console.log(items);    
     
 $.ajax({
   url: "/seat_reserved",
@@ -311,6 +325,15 @@ $.ajax({
 
       
     
+
+
+
+});
+
+
+
+
+
 
 
 </script>

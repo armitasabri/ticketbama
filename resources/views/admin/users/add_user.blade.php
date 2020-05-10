@@ -30,11 +30,14 @@
                     <div class="form-group">
                             <label>نام کاربر</label>
                             <input type="text" name="name" placeholder="نام" value="" class="form-control">
+                            @if  ($errors->any())
+								            <p style="color:red">{{$errors->first('name')}}<p>
+								            @endif
                     </div>  
                     <div class="form-group">
                         <label>رول</label>
                         <select id="roles" name="roles" value="" class="form-control">
-                            <option  >انتخاب نقش</option>
+                         
                             @foreach ($roles as $role)
                             <option  >{{$role->name}}</option>
                     
@@ -44,6 +47,9 @@
                     <div class="form-group">
                         <label>ایمیل</label>
                         <input type="email" value="" name="email" placeholder="پست الکترونیک" class="form-control">
+                        @if  ($errors->any())
+								            <p style="color:red">{{$errors->first('email')}}<p>
+								            @endif
                       </div>
                       <div class="form-group">
                         <label>آواتار</label>
@@ -52,10 +58,16 @@
                       <div class="form-group">
                         <label>رمز عبور</label>
                         <input type="password" value="" name="password" placeholder="رمز عبور" class="form-control">
+                        @if  ($errors->any())
+								            <p style="color:red">{{$errors->first('password')}}<p>
+								            @endif
                       </div>
                       <div class="form-group">
                         <label>شماره همراه</label>
                         <input type="text" value="" name="mobile" placeholder="موبایل" class="form-control">
+                        @if  ($errors->any())
+								            <p style="color:red">{{$errors->first('mobile')}}<p>
+								            @endif
                       </div>  
                  
                   

@@ -25,19 +25,20 @@
           </div>
         </div>
       </section>
-      <script src="{{asset('assets2/vendor/fullcalendar/fullcalendar.min.js')}}">   </script>
     
-<script src="{{asset('assets2/vendor/fullcalendar/locale/fa.js')}}"> </script>
-      <script>
+      <script src="{{asset('assets2/vendor/jquery/jquery.min.js')}}"></script>
 
+<script src="{{asset('assets2/vendor/fullcalendar/fullcalendar.js')}}"></script>
+<script src="{{asset('assets2/vendor/fullcalendar/locale/fa.js')}}"></script>
 
+<script>
 ...
 var calendar = new FullCalendar.Calendar(calendarEl, {
   locale: 'fa'
 });
 ...
-
+</script>
       
-      </script>
+     
       
     @endsection

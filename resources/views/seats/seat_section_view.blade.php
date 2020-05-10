@@ -12,7 +12,7 @@
                     <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
                         <!-- event image -->
                         <div class="speaker-single-thumb">
-                        <img src="../storage/{{$h->Event->fileimage}}" alt="" style="height: 280px;width:100%;">
+                        <img src="../assets/img/feature-movies/{{$h->Event->fileimage}}" alt="" style="height: 280px;width:100%;">
                         </div>
 
 

@@ -31,7 +31,10 @@
                     <div class="form-group">
                     <label>نام رویداد</label>
                    <input type="text" name="title" placeholder="عنوان فیلم/تئاتر یا کنسرت" value="" class="form-control">
-                    </div>  
+                   @if  ($errors->any())
+                   <p style="color:red">{{$errors->first('title')}}<p>
+                   @endif
+                  </div>  
                     <div class="form-group">
                         <label>دسته‌بندی</label>
                         <select id="categories" name="categories" value="" class="form-control">
@@ -57,37 +60,61 @@
                       <div class="form-group">
                         <label>درباره رویداد</label>
                        <input type="text" name="description" placeholder="توضیح درباره‌ی رویداد" value="" class="form-control">
-                        </div>
+                       @if  ($errors->any())
+                       <p style="color:red">{{$errors->first('description')}}<p>
+                       @endif
+                      </div>
                     <div class="form-group">
                         <label>تاریخ رویداد</label>
-                        <input type="date" value="" name="date" placeholder="تاریخ" class="form-control">
+                        <input type="date"  name="date" placeholder="تاریخ" class="form-control">
+                        @if  ($errors->any())
+								            <p style="color:red">{{$errors->first('date')}}<p>
+								            @endif
                       </div>
                       <div class="form-group">
                         <label>عکس اصلی</label>
                         <input type="file"  name="singlefile" class="form-control">
+                        @if  ($errors->any())
+								            <p style="color:red">{{$errors->first('singlefile')}}<p>
+								            @endif
                       </div>
 
                       <div class="form-group">
                         <label>عکس‌های فرعی</label>
                         <input type="file"  name="file[]" multiple class="form-control dropzone">
+                        @if  ($errors->any())
+								            <p style="color:red">{{$errors->first('file')}}<p>
+								            @endif
                         
                        
                       </div>
                       <div class="form-group">
                         <label>مدت زمان رویداد</label>
-                        <input type="text" value="" name="duration" placeholder="دقیقه" class="form-control">
+                        <input type="text"  name="duration" placeholder="دقیقه" class="form-control">
+                        @if  ($errors->any())
+								            <p style="color:red">{{$errors->first('duration')}}<p>
+								            @endif
                       </div>
                       <div class="form-group">
                         <label>کارگردان</label>
                         <input type="text" value="" name="director" placeholder="کارگردان" class="form-control">
+                        @if  ($errors->any())
+								            <p style="color:red">{{$errors->first('director')}}<p>
+								            @endif
                       </div>  
                       <div class="form-group">
                         <label>بازیگران</label>
                         <input type="text" value="" name="cast" placeholder="بازیگران" class="form-control">
+                        @if  ($errors->any())
+								            <p style="color:red">{{$errors->first('cast')}}<p>
+								            @endif
                       </div>  
                       <div class="form-group">
                         <label> یا خواننده </label>
                         <input type="text" value="" name="artist" placeholder="هنرمند" class="form-control">
+                        @if  ($errors->any())
+								            <p style="color:red">{{$errors->first('artist')}}<p>
+								            @endif
                       </div>  
                       <div class="form-group">
                         <label>سانس</label>

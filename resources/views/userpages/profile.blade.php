@@ -7,7 +7,10 @@
                 <div class="card-header">
                     <h3 style="direction: rtl; text-align: right; display: inline-block;">   پروفایل شما </h3>
                     <div class="col-3 pt-3 float-left ">
-                        <img src="{{asset('assets/img/mimg/22.jpg')}}"  class="rounded-circle">
+                    
+                         <img src="assets/img/avatars/{{Auth::user()->fileimage}}"  class="rounded-circle"> 
+                  
+                  
                     </div>
 
                     <div class="card-body">

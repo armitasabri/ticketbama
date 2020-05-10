@@ -11,7 +11,7 @@
                    
                 </div>
                 <div class="card-body text-white">
-                    <form action="{{route('save_profile')}}/?id={{$user->id}}" method="POST">
+                    <form action="{{route('save_profile')}}/?id={{$user->id}}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
@@ -65,9 +65,20 @@
                             @enderror
                         </div>
 
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style="border-radius: 15%;  width:40px;"><i class="fa fa-file-image-o" aria-hidden="true"></i></span>
+                            </div>
+                            <input id="file" type="file" placeholder=" عکس کاربری" class="form-control @error('file') is-invalid @enderror" name="file"   >
 
+                            @error('file')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         
-                        <div class="form-group float-left" >
+                        <div class="form-group float-left pt-4" >
                   
                             <button type="submit" class="btn confer-btn"><h6 class="pt-2">تغییر اطلاعات</h6> <i class="zmdi zmdi-long-arrow-right"></i></button>
                             </div>

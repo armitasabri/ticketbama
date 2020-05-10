@@ -6,11 +6,11 @@
           <!-- Income-->
           <div class="card income text-center">
             <div class="icon"><i class="icon-line-chart"></i></div>
-            <div class="number">126,418</div><strong class="text-primary">All Income</strong>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+          <div class="number">{{$all_income}} تومان</div><strong class="text-primary">تمامی درآمد</strong>
+            <p>در اینجا درآمد تاکنون سایت از طریق سفارشات تکمیل شده را مشاهد می‌کنید</p>
           </div>
         </div>
-        <div class="col-lg-4">
+        {{-- <div class="col-lg-4">
           <!-- Monthly Usage-->
           <div class="card data-usage">
             <h2 class="display h4">Monthly Usage</h2>
@@ -22,7 +22,7 @@
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
           </div>
-        </div>
+        </div> --}}
         <div class="col-lg-4">
           <!-- User Actibity-->
           <div class="card user-activity">

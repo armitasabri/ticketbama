@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Bus\Dispatcher;
 use App\Jobs\CheckSeatsJob;
 use DispatchesJobs;
-
-
 use Javascript;
+
+
 
 class SeatController extends Controller
 {
@@ -63,12 +63,13 @@ class SeatController extends Controller
         $columns=($allseats->count()/$rows);
         // dd($columns);
         $data=json_encode($columns);
-        return view('seats.seats',compact(['hs','myallseats','columns','tedad_bilit','oid']));
+        $jdata=json_encode($rows);
+        return view('seats.seats',compact(['hs','myallseats','columns','tedad_bilit','oid','rows']));
        }
         else{
           $message="صندلی برای این بخش وجود ندارد";
           $columns=0;
-        return view('seats.seats',compact(['hs','myallseats','message','columns','oid','tedad_bilit']));
+        return view('seats.seats',compact(['hs','myallseats','message','rows','columns','oid','tedad_bilit']));
 
         }
         
@@ -112,11 +113,11 @@ class SeatController extends Controller
     
 
 
-      public function seatplan(){
-          $seats=Seat::all();
-        //   dd($seats);
-    return view('seats.myseatplan1')->with('seats',$seats);
-      }
+    //   public function seatplan(){
+    //       $seats=Seat::all();
+    //     //   dd($seats);
+    // return view('seats.myseatplan1')->with('seats',$seats);
+    //   }
 
     
 
@@ -142,18 +143,21 @@ class SeatController extends Controller
     //     return view('seats.myseatplan4')->with('allseats',$allseats)->with('columns',$columns);
     // }
 
+
+
+
     public function seat_reserved(Request $request) {
       $ids=$request->ids;
  
-    $selected=Seat::find($ids);
+    $selected=Seat_hall_sanse::find($ids);
       //  dd($selected);
     foreach($selected as $select){
       
-      $a=$select->Seat_hall_sanse->first();
-      $a->status_id=1;
-      $a->save(); 
-
-     
+      // $a=$select->Seat_hall_sanse->first();
+      // $a->status_id=1;
+      // $a->save(); 
+     $select->status_id=1;
+     $select->save();
     }
     $m="successfull!";
         echo json_encode($m);
@@ -171,15 +175,14 @@ public function seat_sold(Request $request){
   $order=Order::where('user_id',$user)->orderBy('id','DESC')->first();
   // dd($order);
   
-$selected=Seat::find($ids);
+$selected=Seat_hall_sanse::find($ids);
   //  dd($selected);
 foreach($selected as $select){
   $ticket= new Ticket();
   $ticket->orders_id=$order->id;
-  $ticket->seats_id=$select->id;
-  $a=$select->Seat_hall_sanse->first();
-  $a->status_id=2;
-  $a->save(); 
+  $ticket->seats_id=$select->seat->id;
+  $select->status_id=2;
+  $select->save(); 
   $ticket->save();
 
  

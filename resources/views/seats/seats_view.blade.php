@@ -12,7 +12,7 @@
                     <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
                         <!-- event image -->
                         <div class="speaker-single-thumb">
-                        <img src="../../storage/{{$hs->event->fileimage}}" alt="" style="height: 280px;width:100%;">
+                        <img src="../../assets/img/feature-movies/{{$hs->event->fileimage}}" alt="" style="height: 280px;width:100%;">
                         </div>
 
 
@@ -62,7 +62,6 @@
 
                      <span style="display:none">  {{$color="none"}}</span> 
                    
-                    {{-- @foreach ($seat->Seat_hall_sanse as $item) --}}
                     @if($seat->status_id ===2 )
                     <span style="display:none;">  {{$color="red"}}</span>
                     @else
@@ -70,13 +69,13 @@
                 
                   
                     @endif
-                    {{-- @endforeach  --}}
+                   
                    
                     @if ($seat->seat->forward== "yes")
-                <div id="{{$seat->id}}" class="col seats target forward p-0">
+                <div  id="{{$seat->id}}" class="col seats target forward p-0">
                       {{-- <img  src="{{asset('assets/img/seats/seat.png')}}" alt="" style="height:50px;width:50px;background-color:{{$color}}"> --}}
-                    
-                        <span class="icon-chairr" style="font-size:300%;color:{{$color}}"></span>
+                     
+                <span data-toggle="tooltip" title="ردیف: {{$seat->seat->seat_row}} صندلی: {{$seat->seat->seat_col}} وضعیت: {{$seat->status->name}}" class="icon-chairr" style="font-size:300%;color:{{$color}}"></span>
                     
                       
                       <span style="display:none;">
@@ -88,11 +87,11 @@
                       
                       </div> 
                      @elseif($seat->seat->empty== "yes" ) 
-                     <div  id="{{$seat->seat->id}}" class="col seats target empty p-0">
+                     <div   id="{{$seat->id}}" class="col seats target empty p-0">
                       {{-- <img style="display:none;" src="{{asset('assets/img/seats/seat.png')}}" alt="" style="height:50px;width:50px;background-color:{{$color}}"> --}}
                     
                       
-                          <span class="icon-chairr" style="font-size:300%;color:{{$color}};display:none"></span>
+                          <span data-toggle="tooltip" title="ردیف: {{$seat->seat->seat_row}} صندلی: {{$seat->seat->seat_col}} وضعیت: {{$seat->status->name}}" class="icon-chairr" style="font-size:300%;color:{{$color}};display:none"></span>
                        
                      
                       <span style="display:none">
@@ -101,11 +100,11 @@
                       </div>   
                      @else
                   
-                  <div id="{{$seat->seat->id}}" class="col seats target p-0">
+                  <div  id="{{$seat->id}}" class="col seats target p-0">
                    {{-- <img  src="{{asset('assets/img/seats/seat.png')}}" alt="" style="height:50px;width:50px;background-color:{{$color}}"> --}}
                 
                    
-                        <span class="icon-chairr" style="font-size:300%;color:{{$color}}"></span>
+                        <span data-toggle="tooltip" title="ردیف: {{$seat->seat->seat_row}} صندلی: {{$seat->seat->seat_col}} وضعیت: {{$seat->status->name}}" class="icon-chairr" style="font-size:300%;color:{{$color}}"></span>
                    
                
                   
@@ -148,7 +147,9 @@
 
 
 <script>
-    
+   $(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+
 
 var columns = {!! json_encode($columns) !!};
 
@@ -162,6 +163,11 @@ var divs = $(".target");
     for(var i = 0; i < divs.length; i+=columns) {
       divs.slice(i, i+columns).wrapAll("<div class='row'></div>");
     }
+
+
+
+
+});
 
 
 

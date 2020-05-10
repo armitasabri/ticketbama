@@ -48,6 +48,14 @@ class MyUserController extends Controller
      */
     public function store(Request $request)
     {
+
+        request()->validate([
+            'name'=>['required','string','max:255','alpha'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'mobile'=>['required', 'numeric','digits:11'],
+            'file'=>['required','image'],
+         ]);
         $user=new User();
         $user->name=$request->get('name');
        
